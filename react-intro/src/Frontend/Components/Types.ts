@@ -1,6 +1,6 @@
 export type Id = ReturnType<typeof crypto.randomUUID>
 
-export type project = {
+export type Project = {
     id: Id;
     title: string;
 }

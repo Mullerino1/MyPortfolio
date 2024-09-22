@@ -1,17 +1,20 @@
 import { useState, type FormEvent } from "react"
+import Streak from "./Streak"
 
 export default function MyForm(Props: {
     ProjectMutationHandlers: (action: Action, project: Project) => void
-    projects: project[]
+    projects: Project[]
 }) {
     const [titleValid, setTitleValid] = useState(false)
     const [titleIsDirty, setTitleIsDirty] = useState(false)
     const [titleIsTouched, setTitleIsTouched] = useState(false)
-    const [projects, setProjects] = useState('')
+    const [projects, setProjects] = useState<Project[]>([])
+    const [projectTitle, setProjectTitle] = useState('')
+
     // <
     // { id: ReturnType<typeof crypto.randomUUID>; projects: string }[]>([])
 
-    const validateTitleInput = (projects: string) => {
+    const validateTitleInput = (title: string) => {
         if (titleIsTouched && titleIsDirty){
             setTitleValid(projects.trim().length > 2)
         }
@@ -26,33 +29,39 @@ export default function MyForm(Props: {
 
         if (!form) return
 
-        ProjectMutationHandlers('add', { id: crypto.randomUUID(), projects})
+        // ProjectMutationHandlers('add', { id: crypto.randomUUID(), project})
+        ProjectMutationHandlers('add', { id: crypto.randomUUID(), title: projects })
+
 
         // setProjects((prevProjects) => [
         //     ...prevProjects,
         //     { id: crypto.randomUUID(), projects },
         // ])
 
-        setProjects('')
+        setProjectTitle('')
         setTitleIsDirty(false)
         setTitleIsTouched(false)
         setTitleValid(false)
     }
 
-    const removeProject = (project: Project) => {
-        ProjectMutationHandlers('remove', project)
-    }
+    // const removeProject = (project: Project) => {
+    //     ProjectMutationHandlers('remove', project)
+    // }
 
-    const updateProjects = (event: FormEvent<HTMLInputElement>) => {
+    const updateProjectTitle = (event: FormEvent<HTMLInputElement>) => {
         const input = event.target as HTMLInputElement | null
         if (!input) return
         setTitleIsDirty(true)
-        setProjects(input.value)
+        setProjectTitle(input.value)
     }
 
-    const removeProject = (id: string) => {
-        setProjects((prevProjects) => prevProjects.filter((project) => project.id !== id))
-    }
+    // const removeProject = (id: string) => {
+    //     setProjects((prevProjects) => prevProjects.filter((project) => project.id !== id))
+        const removeProject = (project: Project) => {
+            setProjects(prevProjects => prevProjects.filter(p => p.id !== project.id))
+        }
+        
+    // }
     //     const form = event.target as HTMLFormElement | null
 
     //     if (!form) return
@@ -86,7 +95,7 @@ export default function MyForm(Props: {
                 type='text'
                 id='project'
                 name='project'
-                onChange={updateProjects}
+                onChange={updateProjectTitle}
                 onFocus={() => {
                     console.log('onFocus')
                     setTitleIsTouched(true)
@@ -95,7 +104,7 @@ export default function MyForm(Props: {
                     console.log('onBlur')
                     validateTitleInput(projects)
                 }}
-                value={projects}
+                value={projectTitle}
                 />
                 {!titleValid && titleIsDirty ? (
                     <p className='warning'>Name has to be at least 3 signs long</p>
