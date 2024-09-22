@@ -1,15 +1,16 @@
 // import { Route, Routes } from 'react-router-dom'
 import './Styling/Styling.scss'
-import MyForm from './Components/Projects'
+// import MyForm from './Components/Projects'
 import { useState } from 'react'
 import Streaks from './Components/Streaks'
 import Welcome from './Components/Welcome'
 import React from 'react'
+import Projects from './Components/Projects'
 
 
 function App() {
   console.log('console log i app')
-  const [projects, setProjects] = useState<MyForm[]>([]);
+  const [projects, setProjects] = useState<Projects[]>([]);
 
   const ProjectMutationHandlers = (action: Action, project: Project) => {
     switch (action) {
@@ -25,10 +26,10 @@ function App() {
     }
   }
 
-  const handlers = {
-    add,
-    remove
-  }
+  // const handlers = {
+  //   add,
+  //   remove
+  // }
 
   const add = (project: projectType) => {
     setProjects((prev) => [...prev, project])
@@ -85,7 +86,7 @@ function App() {
       updateStreakCount = {updateStreakCount}
       total={totalStreaks()}
       />
-      <MyForm projects={projects} ProjectMutationHandlers={ProjectMutationHandlers}/>
+      <Projects projects={projects} ProjectMutationHandlers={ProjectMutationHandlers}/>
     </React.Fragment>
   )
 }

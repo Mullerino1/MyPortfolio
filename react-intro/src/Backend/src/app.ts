@@ -25,7 +25,13 @@ app.get("/projects", (c) => {
                 id: crypto.randomUUID(),
                 title: 'fun',
                 createdAt: new Date("2020-06-12"),
-                categories: ["koding", "games"],
+                categories: ["workout", "health"],
+            },
+            {
+                id: crypto.randomUUID(),
+                title: 'read',
+                createdAt: new Date("2021-06-12"),
+                categories: ["programming"],
             },
         ]
     })

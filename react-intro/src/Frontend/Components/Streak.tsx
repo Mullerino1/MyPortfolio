@@ -10,17 +10,7 @@ import { Streak as StreakType } from "./Types"
 
 export default function Streak(props: Readonly<PropsWithChildren<StreakType>>) {
     const {children, streakCount, projectId } = props
-    // const [streakCount, setStreakCount] = useState(streaks)
-
-    // const updateStreak = () => {
-    //     streaks += 1
-    //     console.log(streaks)
-    // }
-
-    // const updateStreak = () => {
-    //     setStreakCount(streakCount + 1)
-    //     console.log(streakCount)
-    // }
+   
 
     return (
         <>
