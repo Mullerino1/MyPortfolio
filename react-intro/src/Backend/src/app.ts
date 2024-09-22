@@ -13,7 +13,7 @@ app.get("/projects", (c) => {
                 id: crypto.randomUUID(),
                 title: 'game',
                 createdAt: new Date("2024-01-04"),
-                categories: ["koding", "programming"],
+                categories: ["games"],
             },
             {
                 id: crypto.randomUUID(),
@@ -25,17 +25,11 @@ app.get("/projects", (c) => {
                 id: crypto.randomUUID(),
                 title: 'fun',
                 createdAt: new Date("2020-06-12"),
-                categories: ["koding", "programming"],
+                categories: ["koding", "games"],
             },
         ]
     })
 })
 
-const port = 3000
+export default app
 
-console.log(`server is running woop ${port}`)
-
-serve({
-    fetch: app.fetch,
-    port,
-})
