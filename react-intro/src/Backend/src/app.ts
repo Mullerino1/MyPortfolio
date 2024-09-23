@@ -32,7 +32,7 @@ app.post("/projects", async (c) => {
         streakCount: 0,
 
     })
-    return c.json(created. 201)
+    return c.json(created, 201)
 
 })
 
