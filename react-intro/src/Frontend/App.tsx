@@ -22,6 +22,7 @@ useEffect(() => {
     try {
       console.log("fetching data")
       const projectPromise = projectApi.list()
+      const data = ofetch("http://localhost:3000/projects")
 
       const [projects] = await Promise.all([
         projectPromise,
@@ -44,11 +45,6 @@ const remove = (id: string) => {
   setProjects((prev) => prev.filter((project) => project.id !== id))
 }
 
-
-
-  // const data = ofetch("http://localhost:3000/projects")
-  // console.log('console log i app')
-  // const [projects, setProjects] = useState<Projects[]>([]);
 
   const ProjectMutationHandlers = (action: Action, project: ProjectType) => {
     switch (action) {
