@@ -6,6 +6,9 @@ import Projects from './Components/Projects'
 import { ofetch } from 'ofetch'
 import type { Action, Project as ProjectType} from "./Components/Types"
 import projectApi from "./Components/api"
+import Contact from './Components/Contact'
+import Layout from './Components/Layout'
+import { Route, Routes } from 'react-router-dom'
 
 
 const user = {
@@ -63,10 +66,21 @@ const remove = (id: string) => {
 
 
   return(
+    <>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/Home" element={<App />} />
+        <Route path="/Welcome" element={<Welcome user={user} />} />
+        <Route path="/Contact" element={<Contact />} />
+      </Routes>
+
+    </Layout>
     <main>
       <Welcome user = {user} />
       <Projects projects={projects} ProjectMutationHandlers={ProjectMutationHandlers}/>
     </main>
+    </>
   )
 }
 
