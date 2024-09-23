@@ -6,9 +6,14 @@ import Streaks from './Components/Streaks'
 import Welcome from './Components/Welcome'
 import React from 'react'
 import Projects from './Components/Projects'
+import { ofetch } from 'ofetch'
+// import { Action, Project } from './Components/Types'
 
 
 function App() {
+
+
+  const data = ofetch("http://localhost:3000/projects")
   console.log('console log i app')
   const [projects, setProjects] = useState<Projects[]>([]);
 

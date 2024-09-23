@@ -1,13 +1,16 @@
 type WelcomeProps = {
+    user: {
     name: string,
     age: number;
+    }
 }
 
 export default function Welcome(props: WelcomeProps) {
+    const { user } = props
     return (
         <header>
-            <h1>Hi {props.name}</h1>
-            <p>You are {props.age} yrs old</p>
+            <h1>Hi {user.name}</h1>
+            <p>You are {user.age} yrs old</p>
         </header>
     )
 }
