@@ -39,7 +39,7 @@ export default function Projects(props: {
     const updateProjectTitle = (event: FormEvent<HTMLInputElement>) => {
         const input = event.target as HTMLInputElement | null
         if (!input) return
-        setTitleIsDirty(true)
+        // setTitleIsDirty(true)
         setProjectTitle(input.value)
     }
 
@@ -50,13 +50,13 @@ export default function Projects(props: {
     return (
         <section>
             <h2>Add a new project</h2>
-            <pre>
+            {/* <pre>
                 {JSON.stringify(
                     { projects, titleValid, titleIsDirty, titleIsTouched },
                     null,
                     2
                 )}
-            </pre>
+            </pre> */}
             <form onSubmit={addProject}>
                 <label htmlFor='project'>
                     Project name:
@@ -65,17 +65,18 @@ export default function Projects(props: {
                         id='project'
                         name='project'
                         onChange={updateProjectTitle}
-                        onFocus={() => {
-                            setTitleIsTouched(true)
-                        }}
-                        onBlur={() => {
-                            validateTitleInput(projectTitle)
-                        }}
+                        // onFocus={() => {
+                        //     setTitleIsTouched(true)
+                        // }}
+                        // onBlur={() => {
+                        //     validateTitleInput(projectTitle)
+                        // }}
                         value={projectTitle}
                     />
-                    {!titleValid && titleIsDirty ? (
+                    {/* {!titleValid && titleIsDirty ? (
                         <p className='warning'>Name has to be at least 3 characters long</p>
-                    ) : null}
+                    ) : null} */}
+                    <input type='text' descripton='text' />
                 </label>
                 <button type='submit'>Add</button>
             </form>

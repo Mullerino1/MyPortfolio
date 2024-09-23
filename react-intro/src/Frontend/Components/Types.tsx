@@ -3,6 +3,7 @@ export type Id = ReturnType<typeof crypto.randomUUID>
 export type Project = {
     id: Id;
     title: string;
+    description: string;
 }
 
 export type Streak = {
