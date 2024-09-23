@@ -2,7 +2,7 @@ import App from "../App"
 import Navbar from "./Navbar"
 import React from "react"
 
-export default function Layout({children}) {
+export default function Layout() {
 
     return(
     <>
@@ -14,8 +14,8 @@ export default function Layout({children}) {
         </header>
         <main>
 
-        
-            {children}
+        <App />
+          
 
         </main>
 
