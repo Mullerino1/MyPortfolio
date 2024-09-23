@@ -87,9 +87,9 @@ return (
                 projects.map((project) => (
                     <li key={project.id}>
                         <p>{project.title}</p>
-                        {/* <button onClick={() = removeProject(project)} type="button">
+                        <button onClick={() => removeProject(project)} type="button">
                         [-]
-                        </button> */}
+                        </button>
                     </li>
                 ))
             )}
