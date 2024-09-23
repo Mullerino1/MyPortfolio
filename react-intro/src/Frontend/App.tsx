@@ -4,17 +4,53 @@ import Welcome from './Components/Welcome'
 import React from 'react'
 import Projects from './Components/Projects'
 import { ofetch } from 'ofetch'
-// import { Action, Project } from './Components/Types'
+import type { Action, Project as ProjectType} from "./Components/Types"
+import projectApi from "./Components/api"
 
+
+const user = {
+  name: "Mullerino",
+  age: 20,
+}
 
 function App() {
 
+const [projects, setProjects ] = useState<ProjectType[]>([])
 
-  const data = ofetch("http://localhost:3000/projects")
-  console.log('console log i app')
-  const [projects, setProjects] = useState<Projects[]>([]);
+useEffect(() => {
+  const initializeData = async () => {
+    try {
+      console.log("fetching data")
+      const projectPromise = projectApi.list()
 
-  const ProjectMutationHandlers = (action: Action, project: Project) => {
+      const [projects] = await Promise.all([
+        projectPromise,
+      ])
+      console.log("data fetched", projects)
+      setProjects(projects.data ?? [])
+      console.log(" data initialized ")
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  initializeData()
+}, [])
+
+const add = (project: ProjectType) => {
+  setProjects((prev) => [...prev, project])
+}
+
+const remove = (id: string) => {
+  setProjects((prev) => prev.filter((project) => project.id !== id))
+}
+
+
+
+  // const data = ofetch("http://localhost:3000/projects")
+  // console.log('console log i app')
+  // const [projects, setProjects] = useState<Projects[]>([]);
+
+  const ProjectMutationHandlers = (action: Action, project: ProjectType) => {
     switch (action) {
       case 'add':
       add(project)
@@ -28,68 +64,13 @@ function App() {
     }
   }
 
-  // const handlers = {
-  //   add,
-  //   remove
-  // }
-
-  const add = (project: projectType) => {
-    setProjects((prev) => [...prev, project])
-    // setStreaks((prev) => [
-    //   ...prev,
-    //   { id: crypto.randomUUID(), projectId: project.id, streakCount: 0},
-    // ])
-  }
-
-  const remove = (id: string) => {
-    setProjects((prev) => prev.filter((project) => project.id !== id))
-    // setStreaks((prev) => prev.filter((streak) => streak.projectId !== id))
-  }
-  
-
- const user = {
-  name : 'mullerino',
-  age: 20,
- }
-
-//   const initialStreaks = [
-//     { id: '123', projectId: '1', streakCount: 10},
-//     { id: '234', projectId: '2', streakCount: 5},
-//   ]
-
-//   const [streaks, setStreaks] = useState(initialStreaks)
-
-
-//   const updateStreakCount = (id: string) => {
-//     setStreaks((prevStreaks) => {
-//       return prevStreaks.map((streak) => {
-//         if (streak.id === id) {
-//           return { ...streak, streakCount: streak.streakCount + 1}
-//         } 
-//         return streak
-//       })
-//     })
-//   }
-
-//   const totalStreaks = () => {
-//     let total = 0
-//     for (const streak of streaks) {
-//       total += streak.streakCount
-//     }
-//     return total
-//  }
 
 
   return(
-    <React.Fragment>
+    <main>
       <Welcome user = {user} />
-      {/* <Streaks 
-      streaks={streaks}
-      updateStreakCount = {updateStreakCount}
-      total={totalStreaks()}
-      /> */}
       <Projects projects={projects} ProjectMutationHandlers={ProjectMutationHandlers}/>
-    </React.Fragment>
+    </main>
   )
 }
 
