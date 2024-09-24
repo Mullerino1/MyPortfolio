@@ -20,7 +20,7 @@ const create = async (data: Pick<Project, "title" | "description" | "createdAt">
             method: "POST",
             body: data,
         })
-        return createProject ?? {}
+        return createProject
     } catch (error) {
         console.error(error)
     }
