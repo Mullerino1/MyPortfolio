@@ -21,7 +21,6 @@ app.post("/projects", async (c) => {
     const created = {
         id: crypto.randomUUID(),
         title: dataFromFrontend.title,
-        createdAt: new Date(),
         categories: [],
         description: dataFromFrontend.description,
         date: dataFromFrontend.date,
