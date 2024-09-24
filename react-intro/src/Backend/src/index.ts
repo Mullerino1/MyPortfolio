@@ -7,5 +7,5 @@ console.log(`server is running woop woop ${port}`)
 
 serve({
     fetch: app.fetch,
-    port: 3000,
+    port,
 })
