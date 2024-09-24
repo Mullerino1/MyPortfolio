@@ -13,6 +13,8 @@ export default function Projects(props: {
     const [titleIsTouched, setTitleIsTouched] = useState(false)
     // const [projects, setProjects] = useState<Project[]>([])
     const [title, setTitle] = useState('')
+    const [description, setDescription ] = useState('')
+    const [ date, setDate] = useState('')
 
     const validateTitleInput = (title: string) => {
         if (titleIsTouched && titleIsDirty) {
@@ -23,13 +25,13 @@ export default function Projects(props: {
     const addProject = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
-        if(!title) return
+        if(!title || !description || !date) return
 
         const form = event.target as HTMLFormElement | null
         if (!form) return
     
 
-    const newProject = await projectApi.create({ title })
+    const newProject = await projectApi.create({ title, description, date })
     console.log("Created project", newProject)
     if (newProject) {
         ProjectMutationHandlers("add", newProject)
@@ -40,6 +42,8 @@ export default function Projects(props: {
 
 const reset = () => {
     setTitle("")
+    setDescription("")
+    setDate("")
     setTitleIsDirty(false)
     setTitleIsTouched(false)
     setTitleValid(false)
@@ -56,14 +60,28 @@ const updateProject = (event: FormEvent<HTMLInputElement>) => {
     setTitleIsDirty(true)
     setTitle(input.value)
 }
+const updateDescription = (event: FormEvent<HTMLInputElement>) => {
+    const input = event.target as HTMLInputElement | null
+    if(!input) return
+    setDescription(input.value)
+}
+const updateDate = (event: FormEvent<HTMLInputElement>) => {
+    const input = event.target as HTMLInputElement | null
+    if(!input) return
+    setDate(input.value)
+}
 
 return (
     <section>
-        <h3>Add new habit</h3>
+        <h3>Add new Project</h3>
         <form onSubmit={addProject}>
             <label htmlFor="title">
             project name:
-            <input type="text" id="title" name="title" onChange={updateProject} onFocus={() => {
+            <input type="text" 
+            id="title" 
+            name="title" 
+            onChange={updateProject} 
+            onFocus={() => {
                 console.log("onFocus")
                 setTitleIsTouched(true)
             }}
@@ -72,6 +90,24 @@ return (
                 validateTitleInput(title)
             }}
             value = { title }
+            />
+            </label>
+            <label htmlFor="description">
+            description:
+            <input type="text" 
+            id="description" 
+            name="description" 
+            onChange={updateDescription}
+            value = { description }
+            />
+            </label>
+            <label htmlFor="date">
+            date:
+            <input type="date" 
+            id="date" 
+            name="date" 
+            onChange={updateDate}
+            value = { date }
             />
             </label>
             <button type="submit">Add</button>
@@ -87,6 +123,8 @@ return (
                 projects.map((project) => (
                     <li key={project.id}>
                         <p>{project.title}</p>
+                        <p>{project.description}</p>
+                        <p>{project.date}</p>
                         <button onClick={() => removeProject(project)} type="button">
                         [-]
                         </button>

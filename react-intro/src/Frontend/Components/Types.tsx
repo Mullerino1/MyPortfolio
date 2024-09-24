@@ -4,6 +4,7 @@ export type Project = {
     id: Id;
     title: string;
     description: string;
+    createdAt: string;
 }
 
 export type Streak = {

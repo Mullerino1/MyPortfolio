@@ -16,13 +16,14 @@ app.get("/projects", async (c) => {
 })
 
 app.post("/projects", async (c) => {
-    const dataFromFrontend = await c.req.json<{title: string }>()
+    const dataFromFrontend = await c.req.json<{title: string, description: string, createdAt: number}>()
 
     const created = {
         id: crypto.randomUUID(),
         title: dataFromFrontend.title,
-        createdAt: new Date(),
+        createdAt: dataFromFrontend.createdAt,
         categories: [],
+        description: dataFromFrontend.description,
     }
 
     projects.push(created)
