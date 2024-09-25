@@ -86,11 +86,23 @@ body{
             color: var(--black-color);
         }
 
+        form {
 
+            label{
+                display: flex;
+                flex-direction: column;
+                padding: 5px;
+            }
 
-       
+            button{
+                padding-top: 5px;
+            }
+            button:disabled {
+                padding-top: 5px;
+            }
+        }
 
-   
+        section {
 
         ul{
             list-style-type: none;
@@ -112,6 +124,7 @@ body{
                 }
             }
         }
+    }
 
     }
 
