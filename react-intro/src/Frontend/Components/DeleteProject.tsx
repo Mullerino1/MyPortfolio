@@ -17,11 +17,11 @@ return (
             <ul>
                 {projectData.map((projectItem) => (
                     <li key={projectItem.id}>
-                        <div>
-                            <span>{projectItem.id}</span>
-                            <span>{projectItem.title}</span>
-                            <span>{projectItem.description}</span>
-                        </div>
+                        <section>
+                            <h2>{projectItem.title}</h2>
+                            <p>{projectItem.description}</p>
+                     
+                        </section>
                         {projectItem.deleted ? (
                             <p>[DELETED</p>
                         ) : (

@@ -8,6 +8,7 @@ import Navbar from "./Components/Navbar";
 // import Welcome from "./Components/Welcome";
 import DeleteProject from "./Components/DeleteProject"
 
+
 function App(){
   const [projectData, setProjectData] = useState<ProjectType[]>([])
 
@@ -24,7 +25,7 @@ setProjectData(newProjectData)
 
 try {
   const response = await fetch(
-    `http://localhost:3001/${encodeURI(title)}`,
+    `http://localhost:3000/${encodeURI(title)}`,
     {
       method: "DELETE"
     }
@@ -38,7 +39,7 @@ try {
 useEffect(() => {
   const fetchData = async () =>{
     try{
-      const response = await fetch("http://localhost:3001")
+      const response = await fetch("http://localhost:3000")
       const data = await response.json()
       setProjectData(data.data)
     } catch(error){
@@ -50,7 +51,7 @@ useEffect(() => {
 
 const createProjectData = async (project: ProjectType) => {
   try{
-    const response = await fetch("http://localhost:3001", {
+    const response = await fetch("http://localhost:3000", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
