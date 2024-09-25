@@ -2,7 +2,8 @@
   {
     "id": "1",
     "title": "test",
-    "description": "this is a description"
+    "description": "this is a description",
+    "deleted": "true"
   },
   {
     "id": "2",
@@ -18,5 +19,16 @@
     "id": "123",
     "title": "title",
     "description": "this is a project"
+  },
+  {
+    "id": "124",
+    "title": "title1",
+    "description": "this is a project ish"
+  },
+  {
+    "id": "456",
+    "title": "hmmm",
+    "description": "hmmmm",
+    "deleted": "true"
   }
 ]

@@ -8,9 +8,9 @@ type WelcomeProps = {
 export default function Welcome(props: WelcomeProps) {
     const { user } = props
     return (
-        <header>
+        <>
             <h1>Hi {user.name}</h1>
             <p>You are {user.age} yrs old</p>
-        </header>
+        </>
     )
 }

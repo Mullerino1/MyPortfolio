@@ -227,7 +227,7 @@ type FormProps = {
     createProjectData: (data: FormData) => void
 }
 
-const isValid = ({ id, title, description}: Formdata) =>{
+const isValid = ({ id, title, description}: FormData) =>{
     return (
         id &&
         id.length > 2 &&
@@ -263,7 +263,7 @@ export default function Project({createProjectData}: Readonly<FormProps>){
     }
 return (
     <form className="form" onSubmit={handleFormSubmit}>
-        <div>
+        <section>
             <label htmlFor="id">Project id</label>
             <input 
             id="id"
@@ -274,8 +274,8 @@ return (
             onChange={handleData}
             value={data.id}
             />
-        </div>
-        <div>
+        </section>
+        <section>
         <label htmlFor="title">Project Name:</label>
             <input 
             id="title"
@@ -286,8 +286,8 @@ return (
             onChange={handleData}
             value={data.title}
             />
-        </div>
-        <div>
+        </section>
+        <section>
         <label htmlFor="description">Describe your project:</label>
             <input 
             id="description"
@@ -298,7 +298,7 @@ return (
             onChange={handleData}
             value={data.description}
             />
-        </div>
+        </section>
         {showError ? (
             <span className="error" data-testid="error">
                 Title needs at least three signs

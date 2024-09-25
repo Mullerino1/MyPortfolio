@@ -119,5 +119,5 @@ console.log(`server is running ish on port ${port}`)
 
 serve({
     fetch: app.fetch,
-    port,
+    port: 3001
 })
