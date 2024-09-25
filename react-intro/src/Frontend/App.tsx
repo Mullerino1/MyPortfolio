@@ -72,8 +72,7 @@ const createProjectData = async (project: ProjectType) => {
 return(
 
   <Layout>
-    <Title title={"Mullerinos Portfolio"} />
-    <Navbar />
+    
   <DeleteProject projectData={projectData} handleRemoveProject={handleRemoveProject} />
   <Project createProjectData={createProjectData} />
   </Layout>

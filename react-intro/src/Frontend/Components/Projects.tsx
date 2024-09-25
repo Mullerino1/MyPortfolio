@@ -264,18 +264,6 @@ export default function Project({createProjectData}: Readonly<FormProps>){
 return (
     <form className="form" onSubmit={handleFormSubmit}>
         <section>
-            <label htmlFor="id">Project id</label>
-            <input 
-            id="id"
-            type="text"
-            name="id"
-            placeholder="id"
-            required
-            onChange={handleData}
-            value={data.id}
-            />
-        </section>
-        <section>
         <label htmlFor="title">Project Name:</label>
             <input 
             id="title"
@@ -299,6 +287,18 @@ return (
             value={data.description}
             />
         </section>
+        {/* <article className="fillForm">
+            <label htmlFor="id">Project id</label>
+            <input 
+            id="id"
+            type="text"
+            name="id"
+            placeholder="id"
+            required
+            onChange={handleData}
+            value={data.id}
+            />
+        </section> */}
         {showError ? (
             <span className="error" data-testid="error">
                 Title needs at least three signs
