@@ -1,20 +1,22 @@
-import App from "../App"
-import Navbar from "./Navbar"
 import React from "react"
+import Navbar from "./Navbar"
 
-export default function Layout() {
+type LayoutProps = {
+    children: React.ReactNode
+}
+
+export default function Layout({children}: LayoutProps) {
 
     return(
     <>
         <header>
         <h1>Portfolio</h1>
-
         <Navbar />
 
         </header>
         <main>
 
-        <App />
+        {children}
           
 
         </main>
