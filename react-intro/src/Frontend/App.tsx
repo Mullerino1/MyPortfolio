@@ -12,9 +12,9 @@ import DeleteProject from "./Components/DeleteProject"
 function App(){
   const [projectData, setProjectData] = useState<ProjectType[]>([])
 
-  const handleRemoveProject = async (title: string) => {
+  const handleRemoveProject = async (id: string) => {
 const newProjectData = projectData.map((project) => {
-  if (project.title === title) {
+  if (project.id === id) {
     return { ...project, deleted: true}
   }
   return project
@@ -25,7 +25,7 @@ setProjectData(newProjectData)
 
 try {
   const response = await fetch(
-    `http://localhost:3000/${encodeURI(title)}`,
+    `http://localhost:3000/${encodeURI(id)}`,
     {
       method: "DELETE"
     }
@@ -72,8 +72,8 @@ const createProjectData = async (project: ProjectType) => {
 return(
 
   <Layout>
-    
-  <DeleteProject projectData={projectData} handleRemoveProject={handleRemoveProject} />
+      <Project createProjectData={createProjectData} />
+
    <figcaption>
       <div className="container">
       <img src="src/Frontend/img/PFPIzumi.png" alt="Profile picture of an anime character" className="image"/>
@@ -82,7 +82,8 @@ return(
         </div>
       </div>
     </figcaption>
-  <Project createProjectData={createProjectData} />
+  <DeleteProject projectData={projectData} handleRemoveProject={handleRemoveProject} />
+
   </Layout>
 )
 

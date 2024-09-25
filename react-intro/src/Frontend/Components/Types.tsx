@@ -5,16 +5,15 @@ export type Project = {
     title: string
     description: string
     deleted?: boolean
-    date?: Date
 }
 
 
-export const actions = {
-    add: 'add',
-    remove: 'remove',
-}
+// export const actions = {
+//     add: 'add',
+//     remove: 'remove',
+// }
 
-export type Action = (typeof actions)[keyof typeof actions];
+// export type Action = (typeof actions)[keyof typeof actions];
 
 
 

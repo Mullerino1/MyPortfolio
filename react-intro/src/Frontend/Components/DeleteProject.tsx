@@ -1,7 +1,7 @@
 import type { Project } from "./Types";
 
 type ProjectIdeaProps = {
-    projectData: Pick<Project, "id" | "title" | "description" | "deleted" | "date" >[]
+    projectData: Pick<Project, "id" | "title" | "description" | "deleted" >[]
     handleRemoveProject: (title: string) => void
 }
 
@@ -20,7 +20,6 @@ return (
                         <section>
                             <h2>{projectItem.title}</h2>
                             <p>{projectItem.description}</p>
-                            
                         </section>
                         {projectItem.deleted ? (
                             <p>[DELETED</p>

@@ -9,13 +9,12 @@ type FormProps = {
     createProjectData: (data: FormData) => void
 }
 
-const isValid = ({ id, date, title, description}: FormData) =>{
+const isValid = ({  title, description}: FormData) =>{
     return (
-        id &&
-        id.length > 2 &&
+      
         title &&
-        description &&
-        date
+        description 
+    
         
     )
 }
@@ -25,7 +24,6 @@ export default function Project({createProjectData}: Readonly<FormProps>){
         id: "",
         title: "",
         description: "",
-        date: new Date()
     })
 
     const [isDirty, setDirty] = useState(false)
@@ -43,9 +41,11 @@ export default function Project({createProjectData}: Readonly<FormProps>){
     const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         if(isValid(data)) {
-            createProjectData({ ...data, date: new Date(data.date) })
+            createProjectData(data)
         }
     }
+
+    
 
    
 return (
@@ -74,17 +74,17 @@ return (
             value={data.description}
             />
         </section>
-        <section>
-        <label htmlFor="date">Date:</label>
+        {/* <section>
+        <label htmlFor="id">Id LOL:</label>
             <input 
-            id="date"
-            type="date"
-            name="date"
+            id="id"
+            type="text"
+            name="id"
             required
             onChange={handleData}
-            value= {data.date}
+            value= {data.id}
             />
-        </section>
+        </section> */}
         
         {showError ? (
             <span className="error" data-testid="error">
