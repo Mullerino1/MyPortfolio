@@ -6,6 +6,7 @@ export type Project = {
     id: Id
     title?: string
     description?: string
+    date?: Date
     deleted?: boolean
 }
 

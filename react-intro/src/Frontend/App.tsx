@@ -74,6 +74,14 @@ return(
   <Layout>
     
   <DeleteProject projectData={projectData} handleRemoveProject={handleRemoveProject} />
+   <figcaption>
+      <div className="container">
+      <img src="src/Frontend/img/PFPIzumi.png" alt="Profile picture of an anime character" className="image"/>
+      <div className="overlay">
+        <img src="src/Frontend/img/Me.jpg" alt="Profile picture of an anime character" className="image_2" />
+        </div>
+      </div>
+    </figcaption>
   <Project createProjectData={createProjectData} />
   </Layout>
 )

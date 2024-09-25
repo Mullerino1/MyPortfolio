@@ -5,6 +5,7 @@ export type Project = {
     title: string
     description: string
     deleted?: boolean
+    date?: Date
 }
 
 
