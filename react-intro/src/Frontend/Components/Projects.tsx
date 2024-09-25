@@ -9,9 +9,10 @@ type FormProps = {
     createProjectData: (data: FormData) => void
 }
 
-const isValid = ({  title, description}: FormData) =>{
+const isValid = ({ id, title, description}: FormData) =>{
     return (
-      
+      id &&
+      id.length > 2 &&
         title &&
         description 
     
@@ -74,7 +75,7 @@ return (
             value={data.description}
             />
         </section>
-        {/* <section>
+        <section>
         <label htmlFor="id">Id LOL:</label>
             <input 
             id="id"
@@ -84,7 +85,7 @@ return (
             onChange={handleData}
             value= {data.id}
             />
-        </section> */}
+        </section>
         
         {showError ? (
             <span className="error" data-testid="error">

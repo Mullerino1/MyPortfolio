@@ -34,10 +34,7 @@ if(!existing) return c.json({ error: "id not found"}, 404)
 })
 
 app.post("/", async (c) => {
-    const {id, title, description, date} = await c.req.json()
     
-    const projectDate = new Date(date);
-
     const body = await c.req.json<Project>()
     if(!body.id) return c.json({ error: "id missing"}, 400)
         const data = await getParsedData()
@@ -47,7 +44,7 @@ app.post("/", async (c) => {
     if (hasId) return c.json({ error: "place alredy exists"}, 409)
         data.push(body)
     await updateProjectData(data)
-    return c.json({data, id, title, description, date: projectDate }, 201)
+    return c.json({data}, 201)
 })
 
 app.delete("/:id", async (c) => {

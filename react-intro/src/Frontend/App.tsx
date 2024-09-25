@@ -56,7 +56,7 @@ const createProjectData = async (project: ProjectType) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(project)
+      body: JSON.stringify(project),
     })
 
     if(response.status === 201){
