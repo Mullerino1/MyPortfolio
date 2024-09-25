@@ -8,13 +8,13 @@ export default function Navbar() {
        <nav>
         <ul>
         <li className="My-Page">
-                <Link to={`/App`}>Home</Link>
+                <Link to={`/home`}>Home</Link>
             </li>
             <li className="My-Projects">
-                <Link to={`/Welcome`}>Welcome</Link>
+                <Link to={`/projects`}>Welcome</Link>
             </li>
             <li className="Contact-Me">
-                <Link to={`/Contact`}>Contact</Link>
+                <Link to={`/contact`}>Contact</Link>
             </li>
            
         </ul>

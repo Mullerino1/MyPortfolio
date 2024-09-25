@@ -5,8 +5,10 @@ import Project from "./Components/Projects";
 import Title from "./Components/Title";
 import Layout from "./Components/Layout";
 import Navbar from "./Components/Navbar";
-// import Welcome from "./Components/Welcome";
+import Welcome from "./Components/Welcome";
 import DeleteProject from "./Components/DeleteProject"
+import {Route, Routes} from 'react-router-dom'
+import Contact from "./Components/Contact";
 
 
 function App(){
@@ -72,6 +74,12 @@ const createProjectData = async (project: ProjectType) => {
 return(
 
   <Layout>
+    <Routes>
+  <Route path="/" element={<App />} />
+  <Route path="/home" element={<App />} />
+  <Route path="/contact" element={<Contact />} />
+  <Route path="/projects" element={<Title title="title" />} />
+    </Routes>
       <Project createProjectData={createProjectData} />
 
    <figcaption>
