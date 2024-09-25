@@ -1,29 +1,18 @@
 [
   {
     "id": "1",
-    "title": "test",
+    "title": "Project_1",
     "description": "this is a description",
     "deleted": "true"
   },
   {
     "id": "2",
-    "title": "test1",
-    "description": "this might be a description",
-    "deleted": "true"
+    "title": "Project_portfolio",
+    "description": "this might be a description"
   },
   {
     "id": "3",
-    "title": "test2",
+    "title": "Project_3",
     "description": "this could be a description"
-  },
-  {
-    "id": "123",
-    "title": "title",
-    "description": "this is a project"
-  },
-  {
-    "id": "675",
-    "title": "AHHH",
-    "description": "AHH"
   }
 ]

@@ -43,6 +43,12 @@ export default function Project({createProjectData}: Readonly<FormProps>){
         event.preventDefault()
         if(isValid(data)) {
             createProjectData(data)
+            console.log('success', data)
+            setData({
+                id: "",
+                title: "",
+                description: "",
+            })
         }
     }
 
