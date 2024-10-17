@@ -40,7 +40,7 @@ import Direction from "./Components/Direction";
 import Project from "./Components/Projects";
 // import type { Project as ProjectType } from "../Components/Types";
 import useProjects from "./hooks/useProjects";
-
+import FrontPage from "./pages/Frontpage";
 
 
 const user = {
@@ -52,18 +52,15 @@ type AppProps = PropsWithChildren
 
 export default function App(props: AppProps) {
   const { children } =  props
-  const { projectData, createProjectData } = useProjects();
+ 
 
 
   return (
     <Layout>
       <Welcome user={user} />
       <Direction>{children}</Direction>
-      <ul>
-        {projectData.map((project) => (
-          <li key={project.id}>{project.title}</li>
-        ))}
-      </ul>
+      <FrontPage />
+    
 
     </Layout>
   )
