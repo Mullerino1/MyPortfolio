@@ -1,92 +1,71 @@
 
-import { useEffect, useState } from "react";
-import type { Project as ProjectType } from "./Components/Types";
-import Project from "./Components/Projects";
-import Title from "./Components/Title";
-import Layout from "./Components/Layout";
-import Navbar from "./Components/Navbar";
-import DeleteProject from "./Components/DeleteProject"
+// import { useState } from "react";
+// import Layout from "./Components/Layout";
+// import ProjectPage from "./pages/ProjectPage";
+// import FrontPage from "./pages/Frontpage";
 
 
-function App(){
-  const [projectData, setProjectData] = useState<ProjectType[]>([])
+// function App(){
+//   const [page, setPage] = useState("projects")
 
-  const handleRemoveProject = async (id: string) => {
-const newProjectData = projectData.map((project) => {
-  if (project.id === id) {
-    return { ...project, deleted: true}
-  }
-  return project
-})
+//   const pages = {
+//     projects: <ProjectPage />,
+//     frontpage: <FrontPage />,
+//   }
 
 
-setProjectData(newProjectData)
 
-try {
-  const response = await fetch(
-    `http://localhost:3000/${encodeURI(id)}`,
-    {
-      method: "DELETE"
-    }
-  )
-  const data = await response.json()
-  setProjectData(data.data)
-} catch (error){
-  console.error("error removing data from server", error)
-}
- }
-useEffect(() => {
-  const fetchData = async () =>{
-    try{
-      const response = await fetch("http://localhost:3000")
-      const data = await response.json()
-      setProjectData(data.data)
-    } catch(error){
-      console.error("error fetchig data from server", error)
-    }
-  }
-  fetchData()
-}, [])
+// return(
 
-const createProjectData = async (project: ProjectType) => {
-  try{
-    const response = await fetch("http://localhost:3000", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(project),
-    })
-
-    if(response.status === 201){
-      const data = await response.json()
-      setProjectData(data.data)
-      console.log("Project added to server")
-    }
-  } catch (error){
-    console.error("error adding data to server:", error)
-  }
-}
-
-return(
-
-  <Layout>
+//   <Layout>
+//     <nav>
+//       <button type="button" onClick={() => setPage("projects")}>
+//         My Projects
+//       </button>
+//       <button type="button" onClick={() => setPage("frontpage")}>
+//         Frontpage
+//       </button>
+//     </nav>
     
-      <Project createProjectData={createProjectData} />
+//   </Layout>
+// )
 
-   <figcaption>
-      <div className="container">
-      <img src="src/Frontend/img/PFPIzumi.png" alt="Profile picture of an anime character" className="image"/>
-      <div className="overlay">
-        <img src="src/Frontend/img/Me.jpg" alt="Profile picture of an anime character" className="image_2" />
-        </div>
-      </div>
-    </figcaption>
-  <DeleteProject projectData={projectData} handleRemoveProject={handleRemoveProject} />
+// }
 
-  </Layout>
-)
+// export default App
+import Welcome from "./Components/Welcome";
+import Layout from "./Components/Layout";
+import type { PropsWithChildren } from "react";
+import Direction from "./Components/Direction";
+import Project from "./Components/Projects";
+// import type { Project as ProjectType } from "../Components/Types";
+import useProjects from "./hooks/useProjects";
 
+
+
+const user = {
+  name: "Alfred",
+  age: 20,
 }
 
-export default App
+type AppProps = PropsWithChildren
+
+export default function App(props: AppProps) {
+  const { children } =  props
+  const { projectData, createProjectData } = useProjects();
+
+
+  return (
+    <Layout>
+      <Welcome user={user} />
+      <Direction>{children}</Direction>
+      <ul>
+        {projectData.map((project) => (
+          <li key={project.id}>{project.title}</li>
+        ))}
+      </ul>
+
+    </Layout>
+  )
+}
+

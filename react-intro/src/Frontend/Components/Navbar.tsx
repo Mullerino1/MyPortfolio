@@ -1,25 +1,47 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import ProjectPage from "../pages/ProjectPage";
+import FrontPage from "../pages/Frontpage";
+import { useState } from "react";
+
+// 
+
+// const pages = {
+//   projects: <ProjectPage />,
+//   frontpage: <FrontPage />,
+// }
+
+
+
+// return(
+
+// <Layout>
+//   <nav>
+//     <button type="button" onClick={() => setPage("projects")}>
+//       My Projects
+//     </button>
+//     <button type="button" onClick={() => setPage("frontpage")}>
+//       Frontpage
+//     </button>
+//   </nav>
 
 
 export default function Navbar() {
+    const [page, setPage] = useState("projects")
+
+    const pages = {
+  projects: <ProjectPage />,
+  frontpage: <FrontPage />,
+}
     
     return(
-       <nav>
-        <ul>
-        <li className="My-Page">
-                <Link to={`/home`}>Home</Link>
-            </li>
-            <li className="My-Projects">
-                <Link to={`/projects`}>Welcome</Link>
-            </li>
-            <li className="Contact-Me">
-                <Link to={`/contact`}>Contact</Link>
-            </li>
-           
-        </ul>
-       
-       </nav>
+        <nav>
+      <button type="button" onClick={() => setPage("projects")}>
+        My Projects
+      </button>
+      <button type="button" onClick={() => setPage("frontpage")}>
+        Frontpage
+      </button>
+    </nav>
         
     )
 }
