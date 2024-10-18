@@ -19,9 +19,9 @@ return(
    <figcaption>
       <div className="container">
       <img src="src/Frontend/img/PFPIzumi.png" alt="Profile picture of an anime character" className="image"/>
-      <div className="overlay">
+      {/* <div className="overlay">
         <img src="src/Frontend/img/Me.jpg" alt="Profile picture of an anime character" className="image_2" />
-        </div>
+        </div> */}
       </div>
     </figcaption>
     <section>
