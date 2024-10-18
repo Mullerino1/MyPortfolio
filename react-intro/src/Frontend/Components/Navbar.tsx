@@ -26,21 +26,21 @@ import { useState } from "react";
 
 
 export default function Navbar() {
-    const [page, setPage] = useState("projects")
-
-    const pages = {
-  projects: <ProjectPage />,
-  frontpage: <FrontPage />,
-}
+   
     
     return(
         <nav>
-      <button type="button" onClick={() => setPage("projects")}>
-        My Projects
-      </button>
-      <button type="button" onClick={() => setPage("frontpage")}>
-        Frontpage
-      </button>
+     <ul>
+      <li>
+        <a href='/'>Home</a>
+      </li>
+      <li>
+        <a href='/projects'>My Projects</a>
+      </li>
+      <li>
+        <a href='/contact'>Contact Me</a>
+      </li>
+     </ul>
     </nav>
         
     )
