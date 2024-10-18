@@ -41,25 +41,34 @@ import Project from "./Components/Projects";
 // import type { Project as ProjectType } from "../Components/Types";
 import useProjects from "./hooks/useProjects";
 import FrontPage from "./pages/Frontpage";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./Components/Navbar";
+import ProjectPage from "./pages/ProjectPage";
+import Contact from "./Components/Contact";
 
+// const user = {
+//   name: "Alfred",
+//   age: 20,
+// }
 
-const user = {
-  name: "Alfred",
-  age: 20,
-}
+// type AppProps = PropsWithChildren
 
-type AppProps = PropsWithChildren
-
-export default function App(props: AppProps) {
-  const { children } =  props
+export default function App() {
+  // const { children } =  props
  
 
 
   return (
     <Layout>
-      <Welcome user={user} />
+      {/* <Welcome user={user} />
       <Direction>{children}</Direction>
-      <FrontPage />
+      <FrontPage /> */}
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<FrontPage />} />
+        <Route path='projects' element={<ProjectPage />} />
+        <Route path='/contact' element={<Contact />} />
+      </Routes>
     
 
     </Layout>

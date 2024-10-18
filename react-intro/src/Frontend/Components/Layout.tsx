@@ -1,5 +1,5 @@
 import React from "react"
-import Navbar from "./Navbar"
+// import Navbar from "./Navbar"
 // import Title from "./Title"
 import type { PropsWithChildren } from "react"
 // import Footer from "./Footer"
@@ -14,7 +14,8 @@ export default function Layout(props: LayoutProps) {
     <>
     <header>
     {/* <Title title={"Mullerinos Portfolio"} /> */}
-        <Navbar/>
+        {/* <Navbar/> */}
+        
     </header>
      
         <main className="container">

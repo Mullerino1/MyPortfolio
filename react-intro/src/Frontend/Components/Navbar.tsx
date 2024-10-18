@@ -1,7 +1,7 @@
-import React from "react"
-import ProjectPage from "../pages/ProjectPage";
-import FrontPage from "../pages/Frontpage";
-import { useState } from "react";
+// import React from "react"
+// import ProjectPage from "../pages/ProjectPage";
+// import FrontPage from "../pages/Frontpage";
+// import { useState } from "react";
 
 // 
 

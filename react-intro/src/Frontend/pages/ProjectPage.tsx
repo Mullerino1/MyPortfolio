@@ -87,15 +87,21 @@ import DeleteProject from "../Components/DeleteProject";
 import useProjects from "../hooks/useProjects"; // Import the custom hook
 
 
+
+
 //move just about all previous information into the useProjects hook :D
 function ProjectPage() {
   const { projectData, handleRemoveProject, createProjectData } = useProjects()
 
   return (
     <Layout>
+      
+      <main>
       <Project createProjectData={createProjectData} />
       
+      
       <DeleteProject projectData={projectData} handleRemoveProject={handleRemoveProject} />
+      </main>
     </Layout>
   )
 }

@@ -15,7 +15,7 @@ return(
 
   <Layout>
     
-
+<main>
    <figcaption>
       <div className="container">
       <img src="src/Frontend/img/PFPIzumi.png" alt="Profile picture of an anime character" className="image"/>
@@ -31,6 +31,7 @@ return(
         ))}
       </ul>
       </section>
+      </main>
 
   </Layout>
 )
