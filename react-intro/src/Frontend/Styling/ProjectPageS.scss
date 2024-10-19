@@ -23,7 +23,7 @@ body {
         background-color: var(--black-color);
 
         section{
-            
+            display: flex;
             color: var(--white-color)
 
         }
@@ -34,7 +34,7 @@ body {
 }
 
 form{
-
+    
     background-color: var(--black-color);
     outline: 3px solid var(--blue-color);
 }

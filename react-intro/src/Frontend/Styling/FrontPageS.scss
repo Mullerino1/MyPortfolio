@@ -27,6 +27,10 @@ body {
     background-color: var(--black-color) ;
 
     main{
+        display: grid;
+        grid-template-columns: (3fr, 1fr);
+        gap: 1rem;
+        padding: 2rem;
         background-color: var(--black-color);
 
         ul{
@@ -36,3 +40,4 @@ body {
         }
     }
 }
+
