@@ -8,12 +8,4 @@ export type Project = {
 }
 
 
-// export const actions = {
-//     add: 'add',
-//     remove: 'remove',
-// }
-
-// export type Action = (typeof actions)[keyof typeof actions];
-
-
 
