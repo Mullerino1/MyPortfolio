@@ -97,9 +97,11 @@ function ProjectPage() {
     <Layout>
       
       <main>
+
+        <section>
+          {/* I could move the project file to be here instead of its own file so i dont have another step between all this but im not sure */}
+        </section>
       <Project createProjectData={createProjectData} />
-      
-      
       <DeleteProject projectData={projectData} handleRemoveProject={handleRemoveProject} />
       </main>
     </Layout>
