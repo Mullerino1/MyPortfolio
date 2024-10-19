@@ -52,6 +52,6 @@ export const useProjectForm = (createProjectData: (data: FormData)=> void) => {
         showError,
         handleData,
         handleFormSubmit,
-        isValis: isValid(data),
+        isValid: isValid(data),
     }
 }

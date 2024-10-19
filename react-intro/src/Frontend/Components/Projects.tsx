@@ -19,7 +19,7 @@ type FormProps = {
 // }
 
 export default function Project({createProjectData}: Readonly<FormProps>){
-    const { data, showError, handleData, handleFormSubmit, /*isValid*/ } = useProjectForm(createProjectData)
+    const { data, showError, handleData, handleFormSubmit, isValid } = useProjectForm(createProjectData)
     // const [data, setData] = useState<FormData>({
     //     id: "",
     //     title: "",
@@ -98,7 +98,7 @@ return (
                 
             </span>
         ): null}
-        <button type="submit" /*disabled={!isValid}*/>
+        <button type="submit" disabled={!isValid}>
             Add Project
         </button>
     </form>
