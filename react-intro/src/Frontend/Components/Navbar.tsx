@@ -1,3 +1,4 @@
+import '../Styling/navStyling.scss'
 
 export default function Navbar() {
    

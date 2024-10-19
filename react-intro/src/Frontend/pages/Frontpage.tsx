@@ -5,6 +5,7 @@ import type { Project as ProjectType } from "../Components/Types";
 import Layout from "../Components/Layout";
 import Project from "../Components/Projects";
 import useProjects from "../hooks/useProjects"; // Import the custom hook
+import '../Styling/FrontPageS.scss'
 
 
 function FrontPage(){
@@ -14,6 +15,7 @@ function FrontPage(){
 return(
 
   <Layout>
+    
     
 <main>
    <figcaption>

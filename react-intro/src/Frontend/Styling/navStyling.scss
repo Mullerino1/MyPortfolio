@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+:root {
+  --font: "Montserrat", sans-serif;
+  --blue-color: #0550ff; // Light blue for buttons
+  --nav-blue-color: #003366; // Dark blue for navbar background
+  --white-color: #fff;
+  --black-color: #010101;
+}
+
+body {
+  background-color: var(--black-color);
+
+  main {
+    background-color: var(--black-color);
+  }
+}
+
+nav {
+  background-color: var(--nav-blue-color);
+  padding: 1rem;
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  li {
+    display: inline;
+  }
+  
+  a {
+    color: var(--white-color);
+    text-decoration: none;
+    font-family: var(--font);
+    padding: 0.5rem 1rem;
+    background-color: var(--blue-color);
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    
+    &:hover,
+    &:focus {
+      background-color: var(--nav-blue-color);
+      color: var(--white-color);
+    }
+  }
+}

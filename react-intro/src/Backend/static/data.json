@@ -2,22 +2,22 @@
   {
     "id": "1",
     "title": "Project_1",
-    "description": "this is a description",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
     "deleted": "true"
   },
   {
     "id": "2",
     "title": "Project_portfolio",
-    "description": "this might be a description"
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
   },
   {
     "id": "3",
     "title": "Project_3",
-    "description": "this could be a description"
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
   },
   {
     "id": "765",
     "title": "Project",
-    "description": "yes eys"
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
   }
 ]

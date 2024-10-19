@@ -14,14 +14,13 @@ return (
     <section className="project-ideas" data-testid="project-idea">
         <h2>Your Projects</h2>
         {projectData.length > 0 ? (
-            <ul>
+            <article>
                 {projectData.map((projectItem) => (
-                    <li key={projectItem.id}>
-                        <section>
+                    <section key={projectItem.id}>
+                        
                             <h2>{projectItem.title}</h2>
                             <p>{projectItem.description}</p>
-                        </section>
-                        {projectItem.deleted ? (
+                            {projectItem.deleted ? (
                             <p>[DELETED</p>
                         ) : (
                             <button type="button" onClick={() => handleRemoveProject(projectItem.id)}
@@ -29,9 +28,9 @@ return (
                                 Remove
                             </button>
                         )}
-                    </li>
+                    </section>
                 ))}
-            </ul>
+            </article>
         ) : (
             <p>No data</p>
         )}
