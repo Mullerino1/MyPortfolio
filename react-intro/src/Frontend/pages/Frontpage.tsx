@@ -29,7 +29,8 @@ return(
     <section>
     <ul>
         {projectData.map((project) => (
-          <li key={project.id}>{project.title}</li>
+          <div key={project.id} className='project-card'>
+            <h2>{project.title}</div>
         ))}
       </ul>
       </section>
