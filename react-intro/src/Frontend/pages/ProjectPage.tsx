@@ -3,7 +3,7 @@
 import React from "react";
 import Layout from "../Components/Layout";
 import Project from "../Components/Projects";
-import DeleteProject from "../Components/DeleteProject";
+import DeleteProject from "../Components/ProjectInfo";
 import useProjects from "../hooks/useProjects"; // Import the custom hook
 import '../Styling/ProjectPageS.scss'
 
