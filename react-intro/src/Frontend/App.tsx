@@ -36,7 +36,6 @@
 import Welcome from "./Components/Welcome";
 import Layout from "./Components/Layout";
 import type { PropsWithChildren } from "react";
-import Direction from "./Components/Direction";
 import Project from "./Components/Projects";
 // import type { Project as ProjectType } from "../Components/Types";
 import useProjects from "./hooks/useProjects";
