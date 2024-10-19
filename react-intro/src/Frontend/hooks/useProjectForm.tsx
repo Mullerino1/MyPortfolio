@@ -1,10 +1,9 @@
-import { useState, type FormEvent } from "react"
+import { useState } from "react"
+import type { Project } from "../Components/Types"
 
-type useFormProps = {
-    createProjectData: (data: FormData) => void
-}
+type FormData = Project
 
-const isValid = ({ id, title, description}: FormData) =>{
+const isValid = ({ id, title, description}: FormData) => {
     return (
       id &&
       id.length > 2 &&
@@ -15,7 +14,7 @@ const isValid = ({ id, title, description}: FormData) =>{
     )
 }
 
-export default function Project({createProjectData}: Readonly<useFormProps>){
+export const useProjectForm = (createProjectData: (data: FormData)=> void) => {
     const [data, setData] = useState<FormData>({
         id: "",
         title: "",
@@ -44,5 +43,15 @@ export default function Project({createProjectData}: Readonly<useFormProps>){
                 title: "",
                 description: "",
             })
+            setDirty(false)
         }
     }
+
+    return {
+        data,
+        showError,
+        handleData,
+        handleFormSubmit,
+        isValis: isValid(data),
+    }
+}
