@@ -61,6 +61,22 @@ export default function useProjects() {
     }
   }
 
+  const onEditProjectTitle = async (id: string, title: string) => {
+    try {
+      const response = await fetch(`http://localhost:3000/${id}`, {
+        method: 'PATCH',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({title}),
+      })
+      const data = await response.json()
+      setProjectData(data)
+    } catch (error) {
+      console.error('error, change went wrong', error)
+    }
+  }
+
   //here we have just about the main change from when it was in a component until what it is now! nice!
   return {
     projectData,
