@@ -7,11 +7,11 @@
 
 // export { URLS, API_URL };
 
-const API_URL = 'http://localhost:3000'
+const API_URL = 'http://localhost:3000/projects'
 
 const URLS = {
-    frontpage: `${API_URL}/pages/Frontpage`,
-    projects: `${API_URL}/pages/ProjectPage`,
+    frontpage: `${API_URL}/`,
+    projects: `${API_URL}/projects`,
 }
 
-export { URLS, API_URL}
+export { URLS, API_URL as endpoints}
