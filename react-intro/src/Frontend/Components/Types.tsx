@@ -5,6 +5,10 @@ export type Project = {
     title: string
     description: string
     deleted?: boolean
+    publishedAt?: boolean
+    public?: boolean
+    status?: boolean
+    tags: string
 }
 
 

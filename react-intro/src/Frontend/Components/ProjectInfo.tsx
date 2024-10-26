@@ -1,7 +1,7 @@
 import type { Project } from "./Types";
 
 type ProjectIdeaProps = {
-    projectData: Pick<Project, "id" | "title" | "description" | "deleted" >[]
+    projectData: Pick<Project, "id" | "title" | "description" | "deleted" | "public" | "publishedAt" | "status" | "tags" >[]
     handleRemoveProject: (title: string) => void
 }
 
