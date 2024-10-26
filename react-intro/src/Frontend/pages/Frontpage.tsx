@@ -30,7 +30,7 @@ return(
     <ul>
         {projectData.map((project) => (
           <div key={project.id} className='project-card'>
-            <h2>{project.title}</div>
+            <h2>{project.title}</h2></div>
         ))}
       </ul>
       </section>
