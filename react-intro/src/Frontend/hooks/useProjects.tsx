@@ -16,7 +16,7 @@ export default function useProjects() {
     setProjectData(newProjectData)
 
     try {
-      const response = await fetch(`http://localhost:3000/${encodeURI(id)}`, {
+      const response = await fetch(`http://localhost:3000/${id}`, {
         method: "DELETE",
       })
       const data = await response.json()
@@ -67,5 +67,6 @@ export default function useProjects() {
     setProjectData,
     handleRemoveProject,
     createProjectData,
+    
   }
 }
