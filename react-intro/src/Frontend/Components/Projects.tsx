@@ -37,16 +37,27 @@ export default function Projects(
     <>
     <form className="form">
       <section className="list">
-        <h3 className="mb-4">Oversikt over vaner</h3>
+        <h3 className="mb-4">Your Projects:</h3>
         {children}
-        <ul id="habits-wrapper">
+        <article>
           {projects.length === 0 ? (
             <li>Du har ingen vaner</li>
           ) : (
             projects.map((project) => (
               <li key={project.id} className="habit-card">
                 <header>
+                    
                   <h4>{project.title}</h4>
+                  <p>{project.description}</p>
+                            {project.deleted ? (
+                            <p>[DELETED</p>
+                        ) : (
+                            
+                            <button type="button" onClick={() => removeProject(project.id)}>
+                                Remove
+                            </button>
+                             )}
+
                   <button
                     onClick={() => editProject(project)}
                     type="button"
@@ -66,7 +77,7 @@ export default function Projects(
               </li>
             ))
           )}
-        </ul>
+        </article>
       </section>
       </form>
       {/* Triks for å trigge recreate - useReducer oppdaterer ikke state ved rerender */}
