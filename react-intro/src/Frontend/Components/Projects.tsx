@@ -6,16 +6,16 @@ import type { HandleProject, Project } from "./Types";
 type ProjectProps = {
   handleProjectMutation: HandleProject;
   projects: Project[];
-  renderStreak: (
-    project: Project
-  ) => React.ReactElement | React.ReactElement[] | null;
+//   renderStreak: (
+//     project: Project
+//   ) => React.ReactElement | React.ReactElement[] | null;
 };
 
 // TODO: Context
 export default function Projects(
   props: Readonly<PropsWithChildren<ProjectProps>>
 ) {
-  const { projects = [], handleProjectMutation, renderStreak, children } = props;
+  const { projects = [], handleProjectMutation, children } = props;
 
   const [editing, setEditing] = useState<Project | undefined>(undefined);
 
@@ -63,7 +63,6 @@ export default function Projects(
                   </button>
                   
                 </header>
-                {renderStreak(project)}
               </li>
             ))
           )}

@@ -150,7 +150,7 @@ export default function FrontPage() {
   const addProjectServer = async (id: string) => {
     try {
       return fetch("http://localhost:3000", {
-        method: "GET",
+        method: "POST",
         credentials: "include",
         body: JSON.stringify({
           note: "",
@@ -183,25 +183,7 @@ export default function FrontPage() {
         renderStreak={(project) => {
           // const streaks = project.streaks;
 
-          return (
-            <>
-              {/* <ul>
-                {streaks?.map((streak) => (
-                  <Streak key={streak.id} {...streak} />
-                ))}
-              </ul> */}
-               <section className="column1">
-
-              <button
-                type="button"
-                className="mt-4"
-                onClick={() => addProject(project.id)}
-              >
-                Legg til streak
-              </button>
-              </section>
-            </>
-          );
+         
         }}
       >
         {/* <StreakTotal

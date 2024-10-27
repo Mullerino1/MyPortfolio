@@ -176,38 +176,118 @@
 // import useHabits from "../hooks/useHabits";
 // import type { Habit, HandleMutation } from "../types";
 
-import React from "react";
+// import React from "react";
+// import Layout from "../Components/Layout";
+// import Project from "../Components/Projects";
+// import DeleteProject from "../Components/ProjectInfo";
+// import useProjects from "../hooks/useProjects"; // Import the custom hook
+// import '../Styling/ProjectPageS.scss'
+// import { useEffect, useState } from "react";
+// // import type { Project as ProjectType } from "../Components/Types";
+// import type { HandleProject, Project as ProjectType } from "../Components/Types"
+// import useProjectForm from "../hooks/useProjectForm";
+
+// export default function ProjectPage() {
+//   const { add, remove, update, status, get, data, error } = useProjects();
+//   const projects = data;
+
+//   const handleProjectMutation: HandleProject = (props) => {
+//     const { action } = props;
+
+//     switch (action) {
+//       case "add":
+//         add(props.project);
+//         break;
+//       case "remove":
+//         remove(props.id);
+//         break;
+//       case "update":
+//         update(props.id, props.project);
+//         break;
+//       default:
+//         break;
+//     }
+//   };
+
+//   const addProjectServer = async (id: string) => {
+//     try {
+//       return fetch("http://localhost:3000", {
+//         method: "POST",
+//         credentials: "include",
+//         body: JSON.stringify({
+//           note: "",
+//           projectId: id,
+//         }),
+//       });
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
+
+//   const addProject = async (id: string) => {
+//     const updatedStreak = await addProjectServer(id);
+
+//     if (!updatedStreak) return;
+
+//     await get();
+//   };
+
+  
+
+//   if (status.loading) return <p>Laster ...</p>;
+//   if (status.error) return <p className="error">{error}</p>;
+
+//   return (
+//     <>
+//       <Project
+//         projects={projects}
+//         handleProjectMutation={handleProjectMutation}
+//         renderStreak={(project) => {
+//           // const streaks = project.streaks;
+
+         
+//         }}
+//       >
+//         {/* <StreakTotal
+//           streakCount={habits.length}
+//           // streakCount={streaks.length}
+//           totalStreak={calculateTotalStreaks()}
+//         /> */}
+//         {/* <pre>{JSON.stringify(status)}</pre> */}
+//       </Project>
+//     </>
+//   );
+// }
+import React, { useEffect, useState } from "react";
 import Layout from "../Components/Layout";
 import Project from "../Components/Projects";
 import DeleteProject from "../Components/ProjectInfo";
 import useProjects from "../hooks/useProjects"; // Import the custom hook
-import '../Styling/ProjectPageS.scss'
-import { useEffect, useState } from "react";
-// import type { Project as ProjectType } from "../Components/Types";
-import type { HandleProject, Project as ProjectType } from "../Components/Types"
+import '../Styling/ProjectPageS.scss';
+import type { HandleProject, Project as ProjectType } from "../Components/Types";
 import useProjectForm from "../hooks/useProjectForm";
 
 export default function ProjectPage() {
-  const { add, remove, update, status, get, data, error } = useProjects();
-  const projects = data;
+  const { add, remove, update, status, get, data, error } = useProjects()
+  const projects = data
 
   const handleProjectMutation: HandleProject = (props) => {
-    const { action } = props;
+    const { action } = props
 
     switch (action) {
       case "add":
-        add(props.project);
-        break;
+        add(props.project)
+        break
       case "remove":
-        remove(props.id);
-        break;
+        remove(props.id)
+        break
       case "update":
-        update(props.id, props.project);
-        break;
+        update(props.id, props.project)
+        break
       default:
-        break;
+        break
     }
-  };
+  }
 
   const addProjectServer = async (id: string) => {
     try {
@@ -218,58 +298,30 @@ export default function ProjectPage() {
           note: "",
           projectId: id,
         }),
-      });
+      })
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
-  };
+  }
 
   const addProject = async (id: string) => {
-    const updatedStreak = await addProjectServer(id);
+    const result = await addProjectServer(id)
+    if (!result) return
 
-    if (!updatedStreak) return;
+    await get()
+  }
 
-    await get();
-  };
-
-  
-
-  if (status.loading) return <p>Laster ...</p>;
-  if (status.error) return <p className="error">{error}</p>;
+  if (status.loading) return <p>Laster ...</p>
+  if (status.error) return <p className="error">{error}</p>
 
   return (
     <>
       <Project
         projects={projects}
         handleProjectMutation={handleProjectMutation}
-        renderStreak={(project) => {
-          // const streaks = project.streaks;
-
-          return (
-            <>
-              {/* <ul>
-                {streaks?.map((streak) => (
-                  <Streak key={streak.id} {...streak} />
-                ))}
-              </ul> */}
-              <button
-                type="button"
-                className="mt-4"
-                onClick={() => addProject(project.id)}
-              >
-                Legg til streak
-              </button>
-            </>
-          );
-        }}
       >
-        {/* <StreakTotal
-          streakCount={habits.length}
-          // streakCount={streaks.length}
-          totalStreak={calculateTotalStreaks()}
-        /> */}
-        {/* <pre>{JSON.stringify(status)}</pre> */}
       </Project>
     </>
-  );
+  )
 }
+
