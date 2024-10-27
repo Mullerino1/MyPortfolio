@@ -50,15 +50,26 @@ app.post("/", async (c) => {
     return c.json({data}, 201)
 })
 
+//Needs some update with my current frontend
 app.delete("/:id", async (c) => {
     const reqId = c.req.param("id")
-    
-    const removedProject = await prisma.project.delete({
-        where: {
-            id: +reqId
-        }
-    })
-return c.json({ data: newData})
+    if (reqId != undefined) {
+        try {
+          const removeProject = await prisma.project.delete({
+              where: {
+                  id: +reqId
+              }
+          })
+          console.log("removed project with id:", reqId)
+          return c.text('Removed!', 201)
+      } catch (error) {
+          console.error("Error removed project:", error)
+          return c.text(`Failed to removed project`, 500)
+      }  
+    }
+    else {
+      return c.text(`id is undefined.`, 500)
+    }
 })
 
 // const port = 3001
