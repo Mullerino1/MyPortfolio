@@ -1,0 +1,20 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("file:./dev.db")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Project {
+    id Int
+    name String
+    description? String
+    dateDay Int
+    dateMonth Int
+    dateYear Int
+    publishedAt DateTime
+    public Boolean
+    status String
+}
