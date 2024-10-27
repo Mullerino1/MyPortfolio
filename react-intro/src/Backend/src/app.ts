@@ -11,6 +11,8 @@ import type { Id } from "./types"
 
 const app = new Hono()
 
+
+
 app.use(
     cors({
         origin: "*",

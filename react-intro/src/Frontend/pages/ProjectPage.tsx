@@ -293,7 +293,6 @@ export default function ProjectPage() {
     try {
       return fetch("http://localhost:3000", {
         method: "POST",
-        credentials: "include",
         body: JSON.stringify({
           note: "",
           projectId: id,

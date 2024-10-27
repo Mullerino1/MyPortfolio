@@ -10,7 +10,7 @@ const remove = async (id: string) => {
   try {
     const removeProject = await fetch(`${url}/${id}`, {
       method: "DELETE",
-      credentials: "include",
+      
     })
     if (!removeProject.ok) throw new Error("failed to remove project")
 
@@ -28,7 +28,7 @@ const create = async (data: Pick<Project, "title">) => {
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "include",
+      
     })
     if (!createdProject.ok) throw new Error("failed to create project")
 
@@ -41,7 +41,7 @@ const create = async (data: Pick<Project, "title">) => {
 const list = async () => {
     try {
         const fetchProjects = await fetch(url, {
-            credentials: "include",
+            
         })
         if (!fetchProjects.ok) throw new Error("failed to fetch projects")
         const projects = await fetchProjects.json()
@@ -56,7 +56,7 @@ const listProjects = async (): Promise <{
 }> => {
     try {
         const response = await fetch(url, {
-            credentials: "include",
+           
         })
         if(!response.ok) throw new Error("Failed to fetch projects")
             const projectData = await response.json()
@@ -66,7 +66,7 @@ const listProjects = async (): Promise <{
         const data = await Promise.all(
             projects.data.map(async (project) => {
                 const projectResponse = await fetch(`${url}/${project.id}/projects`, {
-                    credentials: "include",
+                    
                 })
                 if (!projectResponse.ok) throw new Error("failed to fetch projects")
                     return await projectResponse.json()
@@ -88,7 +88,7 @@ const update = async (id: string, data: Partial<Project>) => {
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "include",
+      
     })
     if (!updateProject.ok) throw new Error("failed to update project")
 
