@@ -9,6 +9,7 @@ import '../Styling/ProjectPageS.scss'
 import { useEffect, useState } from "react";
 // import type { Project as ProjectType } from "../Components/Types";
 import type { HandleProject, Project as ProjectType } from "../Components/Types"
+import useProjectForm from "../hooks/useProjectForm";
 
 
 
@@ -16,6 +17,8 @@ import type { HandleProject, Project as ProjectType } from "../Components/Types"
 //move just about all previous information into the useProjects hook :D
 function ProjectPage() {
   const { remove, add, update, status, get, data, error } = useProjects()
+  // const { fields, handleSubmit, getInputProjectProps, isFieldInvali } = useProjectForm
+
   const projects = data
 
   const handleProjectMutation: HandleProject = (props) => {
