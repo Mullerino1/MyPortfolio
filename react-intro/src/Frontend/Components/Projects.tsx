@@ -35,6 +35,7 @@ export default function Projects(
 
   return (
     <>
+    <form className="form">
       <section className="list">
         <h3 className="mb-4">Oversikt over vaner</h3>
         {children}
@@ -60,6 +61,7 @@ export default function Projects(
                   >
                     [del]
                   </button>
+                  
                 </header>
                 {renderStreak(project)}
               </li>
@@ -67,6 +69,7 @@ export default function Projects(
           )}
         </ul>
       </section>
+      </form>
       {/* Triks for å trigge recreate - useReducer oppdaterer ikke state ved rerender */}
       <ProjectForm key={editing?.id} onSubmit={onSubmit} project={editing} />
     </>

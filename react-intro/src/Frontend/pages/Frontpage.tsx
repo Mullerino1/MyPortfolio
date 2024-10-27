@@ -125,36 +125,36 @@ import { useEffect, useState } from "react";
 import type { HandleProject, Project as ProjectType } from "../Components/Types"
 import useProjectForm from "../hooks/useProjectForm";
 
-export default function HabitPage() {
-  const { add, remove, update, status, get, data, error } = useHabits();
-  const habits = data;
+export default function FrontPage() {
+  const { add, remove, update, status, get, data, error } = useProjects();
+  const projects = data;
 
-  const handleHabitMutation: HandleMutation = (props) => {
+  const handleProjectMutation: HandleProject = (props) => {
     const { action } = props;
 
     switch (action) {
       case "add":
-        add(props.habit);
+        add(props.project);
         break;
       case "remove":
         remove(props.id);
         break;
       case "update":
-        update(props.id, props.habit);
+        update(props.id, props.project);
         break;
       default:
         break;
     }
   };
 
-  const addStreakServer = async (id: string) => {
+  const addProjectServer = async (id: string) => {
     try {
-      return ofetch("http://localhost:3999/v1/streaks", {
-        method: "POST",
+      return fetch("http://localhost:3000", {
+        method: "GET",
         credentials: "include",
         body: JSON.stringify({
           note: "",
-          habitId: id,
+          projectId: id,
         }),
       });
     } catch (error) {
@@ -162,59 +162,55 @@ export default function HabitPage() {
     }
   };
 
-  const addStreak = async (id: string) => {
-    const updatedStreak = await addStreakServer(id);
+  // const addProject = async (id: string) => {
+  //   const updatedStreak = await addProjectServer(id);
 
-    if (!updatedStreak) return;
+  //   if (!updatedStreak) return;
 
-    await get();
-  };
+  //   await get();
+  // };
 
-  const calculateTotalStreaks = () => {
-    let total = 0;
+  
 
-    for (const habit of habits) {
-      total += habit?.streaks?.length ?? 0;
-    }
-    return total;
-  };
-
-  if (status.loading) return <p>Laster ...</p>;
-  if (status.error) return <p className="error">{error}</p>;
+  // if (status.loading) return <p>Laster ...</p>;
+  // if (status.error) return <p className="error">{error}</p>;
 
   return (
     <>
-      <Habits
-        habits={habits}
-        handleHabitMutation={handleHabitMutation}
-        renderStreak={(habit) => {
-          const streaks = habit.streaks;
+      <Project
+        projects={projects}
+        handleProjectMutation={handleProjectMutation}
+        renderStreak={(project) => {
+          // const streaks = project.streaks;
 
           return (
             <>
-              <ul>
+              {/* <ul>
                 {streaks?.map((streak) => (
                   <Streak key={streak.id} {...streak} />
                 ))}
-              </ul>
+              </ul> */}
+               <section className="column1">
+
               <button
                 type="button"
                 className="mt-4"
-                onClick={() => addStreak(habit.id)}
+                onClick={() => addProject(project.id)}
               >
                 Legg til streak
               </button>
+              </section>
             </>
           );
         }}
       >
-        <StreakTotal
+        {/* <StreakTotal
           streakCount={habits.length}
           // streakCount={streaks.length}
           totalStreak={calculateTotalStreaks()}
-        />
+        /> */}
         {/* <pre>{JSON.stringify(status)}</pre> */}
-      </Habits>
+      </Project>
     </>
   );
 }

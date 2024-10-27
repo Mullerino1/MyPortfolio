@@ -16,6 +16,7 @@ import useProjectReducerForm from "../hooks/useProjectReduceFrom"
 // }
 type ProjectIdeaProps = {
   onSubmit: (id: string | undefined, data: Partial<Project>) => void;
+//   handleRemoveProject: (title: string) => void
   project?: Project;
 };
 
@@ -44,7 +45,7 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
   };
 
   return (
-    <section className="habits form-create">
+    <section className="project-ideas" data-testid="project-idea">
       <h3>{isEditing ? labels.edit.title : labels.add.title}</h3>
       {/* <pre>
         {JSON.stringify(
@@ -53,12 +54,13 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
           2
         )}
       </pre> */}
-      <div className="wrapper">
+      {/* <div className="wrapper"> */}
+
+      
         <form onSubmit={handleSubmit}>
-          <div className="title field">
+        <div className="title field">
             <label htmlFor="title">
-              Navn på vanen:
-              <span aria-hidden="true">*</span>
+              Project Name:
             </label>
             <input
               type="text"
@@ -71,10 +73,40 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
             />
             {isFieldInvalid("title") ? (
               <p className="field-error error">
-                Navnet må være minst 3 tegn langt
+                Needs three letters
               </p>
             ) : null}
           </div>
+        {/* <section>
+         <label htmlFor="title">Project Name:</label>
+             <input 
+            id="title"
+            type="text"
+            name="title"
+            placeholder="Your title here"
+           
+            />
+        </section> */}
+        <section>
+        <label htmlFor="description">Describe your project:</label>
+            <input 
+            id="description"
+            type="text"
+            name="description"
+            placeholder="Describe your project"
+         
+            />
+        </section>
+        <section>
+        <label htmlFor="id">Id LOL:</label>
+            <input 
+            id="id"
+            type="text"
+            name="id"
+           
+            />
+        </section>
+         
 
           <div>
             <button type="submit" id="submit" className="success">
@@ -82,7 +114,7 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
             </button>
           </div>
         </form>
-      </div>
+      {/* </div> */}
     </section>
   );
 }
