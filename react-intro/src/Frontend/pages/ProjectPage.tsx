@@ -7,14 +7,34 @@ import DeleteProject from "../Components/ProjectInfo";
 import useProjects from "../hooks/useProjects"; // Import the custom hook
 import '../Styling/ProjectPageS.scss'
 import { useEffect, useState } from "react";
-import type { Project as ProjectType } from "../Components/Types";
+// import type { Project as ProjectType } from "../Components/Types";
+import type { HandleProject, Project as ProjectType } from "../Components/Types"
 
 
 
 
 //move just about all previous information into the useProjects hook :D
 function ProjectPage() {
-  const { projectData, handleRemoveProject, createProjectData } = useProjects()
+  const { remove, add, update, status, get, data, error } = useProjects()
+  const projects = data
+
+  const handleProjectMutation: HandleProject = (props) => {
+    const { action } = props;
+
+    switch (action) {
+      case "add":
+        add(props.project);
+        break;
+      case "remove":
+        remove(props.id);
+        break;
+      case "update":
+        update(props.id, props.project);
+        break;
+      default:
+        break;
+    }
+  };
   
 
 
