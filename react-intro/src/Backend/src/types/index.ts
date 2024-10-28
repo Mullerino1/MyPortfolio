@@ -7,11 +7,13 @@ export type Project = {
     title?: string
     description?: string
     date: Date
-    // publishedAt?: Date | null
+    publishedAt?: Date | null
     deleted?: boolean
-    // tags: string[]
-    // public?: boolean
-    // status?: boolean
+    tags: string[]
+    public?: boolean
+    status?: boolean
 }
 
-export type ToProjectDomain = Project & { deleted?: "true"}
+// export type ToProjectDomain = Project & {public?: "true"}
+
+export type ToProjectDomain = Project & { deleted?: "true", public?: "true", status?: "true"}

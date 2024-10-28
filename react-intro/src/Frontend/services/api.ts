@@ -5,13 +5,13 @@ import type { Project } from "../Components/Types"
 import { validateProject } from "../Features/Helpers/validate";
 
 const url = endpoints
+console.log(url)
 
 const remove = async (id: string) => {
     
   try {
     const removeProject = await fetch(`${url}/${id}`, {
       method: "DELETE",
-      
     })
     if (!removeProject.ok) throw new Error("failed to remove project")
 
@@ -21,7 +21,7 @@ const remove = async (id: string) => {
   }
 }
 
-const create = async (data: Pick<Project, "title">) => {
+const create = async (data) => {
   try {
     const createdProject = await fetch(url, {
       method: "POST",

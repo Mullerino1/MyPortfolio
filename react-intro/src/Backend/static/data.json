@@ -7,22 +7,51 @@
     "public": "",
     "status": "",
     "tags": "",
+    "dateDay": 26,
+    "dateMonth": 6,
+    "dateYear": 2024,
     "deleted": "true"
   },
   {
     "id": "2",
     "title": "Project_portfolio",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "publishedAt": "",
+    "public": "",
+    "status": "",
+    "tags": "",
+    "dateDay": 26,
+    "dateMonth": 6,
+    "dateYear": 2024,
     "deleted": "true"
   },
   {
     "id": "3",
     "title": "Project_3",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "publishedAt": "",
+    "public": "",
+    "status": "",
+    "tags": "",
+    "dateDay": 26,
+    "dateMonth": 6,
+    "dateYear": 2024
   },
   {
     "id": "765",
     "title": "Project",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "publishedAt": "",
+    "public": "",
+    "status": "",
+    "tags": "",
+    "dateDay": 26,
+    "dateMonth": 6,
+    "dateYear": 2024
+  },
+  {
+    "title": "painnnnnnnn",
+    "id": "739392727",
+    "description": "hbfebhfsbefson"
   }
 ]

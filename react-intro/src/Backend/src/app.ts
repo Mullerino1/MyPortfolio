@@ -38,6 +38,7 @@ if(!existing) return c.json({ error: "id not found"}, 404)
 app.post("/", async (c) => {
     
     const body = await c.req.json<Project>()
+    console.log(body)
     if(!body.id) return c.json({ error: "id missing"}, 400)
         const data = await getParsedData()
     const hasId = data.some(

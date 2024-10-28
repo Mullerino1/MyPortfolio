@@ -64,6 +64,7 @@ export function useProjects(){
 
 
   const add = async (data: Partial<ProjectType>) => {
+    console.log(data + '2')
     const { title = ""}  = data
 
     try {

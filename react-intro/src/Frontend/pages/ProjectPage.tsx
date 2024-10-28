@@ -267,6 +267,8 @@ import '../Styling/ProjectPageS.scss';
 import type { HandleProject, Project as ProjectType } from "../Components/Types";
 import useProjectForm from "../hooks/useProjectForm";
 
+
+
 export default function ProjectPage() {
   const { add, remove, update, status, get, data, error } = useProjects()
   const projects = data

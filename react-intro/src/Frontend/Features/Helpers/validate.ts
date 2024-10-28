@@ -10,6 +10,9 @@ const projectSchema = z.object({
     public: z.boolean(),
     deleted: z.boolean(),
     tags: z.array(z.string()),
+    dateDay: z.number(),
+    dateMonth: z.number(),
+    dateYear: z.number()
     
 })
 
