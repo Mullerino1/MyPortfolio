@@ -149,29 +149,29 @@ import type { Project } from "./Types";
 import useProjectReducerForm from "../hooks/useProjectReduceFrom";
 
 type ProjectIdeaProps = {
-  onSubmit: (id: string | undefined, data: Partial<Project>) => void;
-  project?: Project;
-};
+  onSubmit: (id: string | undefined, data: Partial<Project>) => void
+  project?: Project
+}
 
 export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
-  const { onSubmit, project } = props;
-  const isEditing = !!project;
+  const { onSubmit, project } = props
+  const isEditing = !!project
 
   const { handleSubmit, getFieldProps, isFieldInvalid } = useProjectReducerForm({
     initialFields: { 
       title: project?.title ?? "",
       description: project?.description ?? "",
       id: project?.id ?? "",
-      date: project?.dateYear ?? "" // Assuming date is stored as a string in Project type
+      date: project?.createdAt ?? "" 
     },
     onSubmit: (data) => onSubmit(project?.id, data),
     validate: {
       title: (_, value) => value.length > 2,
-      description: (_, value) => value.length > 5, // Example validation rule
-      id: (_, value) => value.trim() !== "", // Example validation rule
-      date: (_, value) => !!Date.parse(value) // Ensure date is a valid date
+      description: (_, value) => value.length > 5, 
+      id: (_, value) => value.trim() !== "", 
+      date: (_, value) => !!Date.parse(value) 
     },
-  });
+  })
 
   const labels = {
     edit: {
@@ -182,7 +182,7 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
       title: "Add a New Project",
       submit: "Add Project",
     },
-  };
+  }
 
   return (
     <section className="project-ideas" data-testid="project-idea">
@@ -244,5 +244,5 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
         </div>
       </form>
     </section>
-  );
+  )
 }

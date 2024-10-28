@@ -18,8 +18,8 @@ import { nb } from "date-fns/locale";
  * @param publishedAt - The date to format the distance from
  * @returns A formatted string with the distance from the given date to now
  */
-export function formatDistance(publishedAt: Date): string {
-  return fDistance(publishedAt, new Date(), {
+export function formatDistance(createdAt: Date): string {
+  return fDistance(createdAt, new Date(), {
     addSuffix: true,
     includeSeconds: true,
     locale: nb,

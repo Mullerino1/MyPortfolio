@@ -7,9 +7,8 @@
     "public": "",
     "status": "",
     "tags": "",
-    "dateDay": 26,
-    "dateMonth": 6,
-    "dateYear": 2024,
+    "createdAt": "2024-01-01",
+    "updatedAt": "2024-03-01",
     "deleted": "true"
   },
   {
@@ -20,9 +19,8 @@
     "public": "",
     "status": "",
     "tags": "",
-    "dateDay": 26,
-    "dateMonth": 6,
-    "dateYear": 2024,
+    "createdAt": "2024-01-01",
+    "updatedAt": "2024-03-01",
     "deleted": "true"
   },
   {
@@ -33,9 +31,8 @@
     "public": "",
     "status": "",
     "tags": "",
-    "dateDay": 26,
-    "dateMonth": 6,
-    "dateYear": 2024
+    "createdAt": "2024-01-01",
+    "updatedAt": "2024-03-01"
   },
   {
     "id": "765",
@@ -45,40 +42,28 @@
     "public": "",
     "status": "",
     "tags": "",
-    "dateDay": 26,
-    "dateMonth": 6,
-    "dateYear": 2024
+    "createdAt": "2024-01-01",
+    "updatedAt": "2024-03-01"
   },
   {
     "title": "titleee",
     "description": "efbenkf",
     "id": "832763",
-    "dateDay": "",
-    "dateMonth": "",
-    "dateYear": ""
+    "createdAt": "2024-01-01",
+    "updatedAt": "2024-03-01"
   },
   {
-    "title": "titlee stuff",
-    "description": "uyvfhbhfubhjnfe",
-    "id": "82736437",
-    "dateDay": "",
-    "dateMonth": "",
-    "dateYear": ""
+    "title": "anotherproject",
+    "description": "efvhnkd",
+    "id": "7383874637",
+    "createdAt": "",
+    "updatedAt": ""
   },
   {
-    "title": "titleagain",
-    "description": "kebfekjfe",
-    "id": "276390",
-    "dateDay": "",
-    "dateMonth": "",
-    "dateYear": ""
-  },
-  {
-    "title": "reeee",
-    "description": "hvfbbjds",
-    "id": "7393747",
-    "dateDay": "",
-    "dateMonth": "",
-    "dateYear": ""
+    "title": "another testproject",
+    "description": "fbhenfeubfjnklsk",
+    "id": "48437464",
+    "createdAt": "",
+    "updatedAt": ""
   }
 ]

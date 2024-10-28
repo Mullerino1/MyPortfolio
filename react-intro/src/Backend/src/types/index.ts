@@ -7,7 +7,7 @@ export type Project = {
     title?: string
     description?: string
     date: Date
-    publishedAt?: Date | null
+    createdAt?: Date | null
     deleted?: boolean
     tags: string[]
     public?: boolean
