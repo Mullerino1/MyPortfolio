@@ -1,7 +1,8 @@
 import { useState, type PropsWithChildren } from "react";
-
+// import { formatDistance } from "../Features/Helpers/format";
 import ProjectForm from "./ProjectInfo";
 import type { HandleProject, Project } from "./Types";
+// import { formatDistance } from "../Features/Helpers/format";
 
 type ProjectProps = {
   handleProjectMutation: HandleProject
@@ -16,6 +17,9 @@ export default function Projects(
   props: Readonly<PropsWithChildren<ProjectProps>>
 ) {
   const { projects = [], handleProjectMutation, children } = props
+
+//   const formatedDistance = formatDistance(new Date(publishedAt));
+
 
   const [editing, setEditing] = useState<Project | undefined>(undefined)
 
@@ -36,19 +40,22 @@ export default function Projects(
   return (
     <>
     <form className="form">
-      <section className="list">
-        <h3 className="mb-4">Your Projects:</h3>
+      <section className="project-ideas">
+        <h2>Your Projects:</h2>
         {children}
         <article>
           {projects.length === 0 ? (
-            <li>Du har ingen vaner</li>
+            <p>You have no projects</p>
           ) : (
             projects.map((project) => (
-              <li key={project.id} className="habit-card">
-                <header>
+              <section key={project.id} className="project-card">
                     
                   <h4>{project.title}</h4>
                   <p>{project.description}</p>
+                  {/* <p>{formatDistance}</p> */}
+                 
+                  <p>{project.public}</p>
+                  <p>{project.tags}</p>
                             {project.deleted ? (
                             <p>[DELETED]</p>
                         ) : (
@@ -56,13 +63,12 @@ export default function Projects(
                             // <button type="button" onClick={() => removeProject(project.id)}>
                             //     Remove
                             // </button>
-                        
+                            
                             <button
                             onClick={() => removeProject(project.id)}
                             type="button"
-                            className="ml-2 error"
                           >
-                            [del]
+                            [remove]
                           </button>
                             
                              )}
@@ -70,14 +76,12 @@ export default function Projects(
                   <button
                     onClick={() => editProject(project)}
                     type="button"
-                    className="ml-auto outline"
                   >
-                    [{editing?.id === project.id ? "lukk" : "endre"}]
+                    [{editing?.id === project.id ? "close" : "change"}]
                   </button>
                  
                   
-                </header>
-              </li>
+              </section>
             ))
           )}
         </article>
