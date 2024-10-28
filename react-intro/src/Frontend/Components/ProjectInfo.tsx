@@ -162,7 +162,7 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
       title: project?.title ?? "",
       description: project?.description ?? "",
       id: project?.id ?? "",
-      date: project?.dateDay ?? "" // Assuming date is stored as a string in Project type
+      date: project?.dateYear ?? "" // Assuming date is stored as a string in Project type
     },
     onSubmit: (data) => onSubmit(project?.id, data),
     validate: {

@@ -13,6 +13,7 @@ const projectSchema = z.object({
     dateDay: z.number(),
     dateMonth: z.number(),
     dateYear: z.number()
+    // date: z.string()
     
 })
 

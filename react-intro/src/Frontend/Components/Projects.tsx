@@ -19,8 +19,7 @@ export default function Projects(
   const { projects = [], handleProjectMutation, children } = props
 
 //   const formatedDistance = formatDistance(new Date(publishedAt));
-        const projectDate = new Date()
-        const dateDistance = formatDistance(new Date(projectDate))
+       
 
 
   const [editing, setEditing] = useState<Project | undefined>(undefined)
@@ -49,7 +48,13 @@ export default function Projects(
           {projects.length === 0 ? (
             <p>You have no projects</p>
           ) : (
-            projects.map((project) => (
+            projects.map((project) => {
+                const projectDate = new Date(project.dateYear, project.dateMonth - 1, project.dateDay)
+                console.log(projectDate)
+                const dateDistance = formatDistance(projectDate)
+                 
+                return(
+            
             
               <section key={project.id} className="project-card">
                     
@@ -86,7 +91,7 @@ export default function Projects(
                   
               </section>
             )
-            )
+})
           )}
         </article>
       </section>
