@@ -6,12 +6,13 @@ import { cors } from "hono/cors";
 import type { Project } from "./types/index"
 import { getParsedData, updateProjectData } from "./types/lib";
 import type { Id } from "./types"
+import { PrismaClient } from "@prisma/client";
 
+
+const prisma = new PrismaClient
 
 
 const app = new Hono()
-
-
 
 app.use(
     cors({
@@ -35,39 +36,34 @@ if(!existing) return c.json({ error: "id not found"}, 404)
     return c.json({ data: existing})
 })
 
-app.post("/", async (c) => {
+app.post("/:id", async (c) => {
     
     const body = await c.req.json<Project>()
-    console.log(body)
-    if(!body.id) return c.json({ error: "id missing"}, 400)
-        const data = await getParsedData()
-    const hasId = data.some(
-        (id) => id.id.toLowerCase() === body.id.toLowerCase()
-    )
-    if (hasId) return c.json({ error: "place alredy exists"}, 409)
-        data.push(body)
+    console.log("post " + body)
     await updateProjectData(data)
-    return c.json({data}, 201)
+    return c.json({body}, 201)
 })
 
+//Needs some update with my current frontend
 app.delete("/:id", async (c) => {
     const reqId = c.req.param("id")
-    const data = await getParsedData()
-    if (!reqId) return c.json({ error: "missing id"}, 400)
-        const existing = data.find(
-    (id) => id.id.toLowerCase() === reqId.toLowerCase()
-)
-if(!existing) return c.json({ error: "id not found"}, 409)
-
-    if (existing.deleted) return c.json({error: "id already deleted"}, 409)
-        const newData = data.map((project) => {
-    if(project.id === reqId) {
-        return { ...project, deleted: true}
+    if (reqId != undefined) {
+        try {
+          const removeProject = await prisma.project.delete({
+              where: {
+                  id: +reqId
+              }
+          })
+          console.log("removed project with id:", reqId)
+          return c.text('Removed!', 201)
+      } catch (error) {
+          console.error("Error removed project:", error)
+          return c.text(`Failed to removed project`, 500)
+      }  
     }
-return project
-})
-await updateProjectData(newData)
-return c.json({ data: newData})
+    else {
+      return c.text(`id is undefined.`, 500)
+    }
 })
 
 // const port = 3001

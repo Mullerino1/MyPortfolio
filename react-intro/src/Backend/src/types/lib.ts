@@ -7,6 +7,8 @@ export async function getParsedData() {
     return parsedData.map(toDomain)
 }
 
+
+
 export async function updateProjectData(newData: Project[]){
     const data = newData.map(projectToJSON)
     console.log("success updateProjectData")
