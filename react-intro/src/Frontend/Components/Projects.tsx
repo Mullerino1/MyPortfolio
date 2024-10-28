@@ -56,6 +56,7 @@ export default function Projects(
                             // <button type="button" onClick={() => removeProject(project.id)}>
                             //     Remove
                             // </button>
+                        
                             <button
                             onClick={() => removeProject(project.id)}
                             type="button"

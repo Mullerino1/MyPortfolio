@@ -7,6 +7,7 @@ import { validateProject } from "../Features/Helpers/validate";
 const url = endpoints
 
 const remove = async (id: string) => {
+    
   try {
     const removeProject = await fetch(`${url}/${id}`, {
       method: "DELETE",
@@ -40,8 +41,7 @@ const create = async (data: Pick<Project, "title">) => {
 
 const list = async () => {
     try {
-        const fetchProjects = await fetch(url, {
-            
+        const fetchProjects = await fetch(url, {   
         })
         if (!fetchProjects.ok) throw new Error("failed to fetch projects")
         const projects = await fetchProjects.json()
