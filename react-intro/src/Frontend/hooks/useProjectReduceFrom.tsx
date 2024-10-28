@@ -1,41 +1,41 @@
-import { useEffect, useReducer, type FormEvent } from "react";
+import { useEffect, useReducer, type FormEvent } from "react"
 
 type FieldState = {
-  value: string;
-  isValid: boolean;
-  isDirty: boolean;
-  isTouched: boolean;
-};
+  value: string
+  isValid: boolean
+  isDirty: boolean
+  isTouched: boolean
+}
 
 const FormAction = {
   UPDATE_FIELD: "UPDATE_FIELD",
   SET_TOUCHED: "SET_TOUCHED",
   RESET_FORM: "RESET_FORM",
-} as const;
+} as const
 
-type FormAction = typeof FormAction;
+type FormAction = typeof FormAction
 
 type UseFormProps<T> = {
-  initialFields: T;
-  onSubmit: (data: T) => void;
+  initialFields: T
+  onSubmit: (data: T) => void
   validate: {
-    [K in keyof T]?: (field: K, value: string) => boolean;
-  };
-};
+    [K in keyof T]?: (field: K, value: string) => boolean
+  }
+}
 
-type Fields<T> = Record<keyof T, FieldState>;
+type Fields<T> = Record<keyof T, FieldState>
 
 type FormState<T extends Record<string, string>> = Fields<T>;
 
 type FormActions<T extends Record<string, string>> =
   | {
-      type: FormAction["UPDATE_FIELD"];
-      field: keyof T;
-      value: string;
-      isValid: boolean;
+      type: FormAction["UPDATE_FIELD"]
+      field: keyof T
+      value: string
+      isValid: boolean
     }
   | { type: FormAction["SET_TOUCHED"]; field: keyof T }
-  | { type: FormAction["RESET_FORM"]; fields?: Fields<T> };
+  | { type: FormAction["RESET_FORM"]; fields?: Fields<T> }
 
 function formReducer<T extends Record<string, string>>(
   state: FormState<T>,
@@ -51,7 +51,7 @@ function formReducer<T extends Record<string, string>>(
           isValid: action.isValid,
           isDirty: true,
         },
-      };
+      }
     case FormAction.SET_TOUCHED:
       return {
         ...state,
@@ -59,10 +59,10 @@ function formReducer<T extends Record<string, string>>(
           ...state[action.field],
           isTouched: true,
         },
-      };
+      }
     case FormAction.RESET_FORM:
-      console.log(action.fields);
-      if (action.fields) return action.fields;
+      console.log(action.fields)
+      if (action.fields) return action.fields
 
       return Object.fromEntries(
         Object.keys(state.fields).map((key) => [
@@ -74,9 +74,9 @@ function formReducer<T extends Record<string, string>>(
             isTouched: false,
           },
         ])
-      ) as Fields<T>;
+      ) as Fields<T>
     default:
-      return state;
+      return state
   }
 }
 
@@ -95,55 +95,55 @@ export function useProjectReducerForm<T extends Record<string, string>>({
           isDirty: false,
           isTouched: false,
         } as FieldState,
-      ];
+      ]
     })
-  ) as Fields<T>;
+  ) as Fields<T>
 
-  const [state, dispatch] = useReducer(formReducer<T>, initialState);
+  const [state, dispatch] = useReducer(formReducer<T>, initialState)
 
   const updateField = (field: keyof T, value: string) => {
-    const isValid = validate[field] ? validate[field](field, value) : true;
-    dispatch({ type: FormAction.UPDATE_FIELD, field, value, isValid });
-  };
+    const isValid = validate[field] ? validate[field](field, value) : true
+    dispatch({ type: FormAction.UPDATE_FIELD, field, value, isValid })
+  }
 
   const setFieldTouched = (field: keyof T) => {
-    dispatch({ type: FormAction.SET_TOUCHED, field });
-  };
+    dispatch({ type: FormAction.SET_TOUCHED, field })
+  }
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const isFormValid = Object.values(state).every((field) => field.isValid);
-    if (!isFormValid) return;
+    event.preventDefault()
+    const isFormValid = Object.values(state).every((field) => field.isValid)
+    if (!isFormValid) return
 
     // Henter ut alle verdiene fra feltene
     const formData = Object.fromEntries(
       Object.keys(state).map((key) => [key, state[key as keyof T].value])
-    ) as T;
+    ) as T
 
-    onSubmit(formData);
-    dispatch({ type: FormAction.RESET_FORM });
-  };
+    onSubmit(formData)
+    dispatch({ type: FormAction.RESET_FORM })
+  }
 
   const getFieldProps = (field: keyof T) => {
     return {
       value: state[field].value,
       onChange: (event: FormEvent<HTMLInputElement>) => {
-        const input = event.target as HTMLInputElement;
-        updateField(field, input.value);
+        const input = event.target as HTMLInputElement
+        updateField(field, input.value)
       },
       onBlur: () => setFieldTouched(field),
-    };
-  };
+    }
+  }
 
   const isFieldInvalid = (field: keyof T) =>
-    !state[field].isValid && state[field].isDirty;
+    !state[field].isValid && state[field].isDirty
 
   return {
     fields: state,
     handleSubmit,
     getFieldProps,
     isFieldInvalid,
-  };
+  }
 }
 
-export default useProjectReducerForm;
+export default useProjectReducerForm

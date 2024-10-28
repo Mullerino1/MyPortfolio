@@ -77,16 +77,6 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
               </p>
             ) : null}
           </div>
-        {/* <section>
-         <label htmlFor="title">Project Name:</label>
-             <input 
-            id="title"
-            type="text"
-            name="title"
-            placeholder="Your title here"
-           
-            />
-        </section> */}
         <section>
         <label htmlFor="description">Describe your project:</label>
             <input 

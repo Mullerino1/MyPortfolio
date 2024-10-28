@@ -4,34 +4,34 @@ import ProjectForm from "./ProjectInfo";
 import type { HandleProject, Project } from "./Types";
 
 type ProjectProps = {
-  handleProjectMutation: HandleProject;
-  projects: Project[];
+  handleProjectMutation: HandleProject
+  projects: Project[]
 //   renderStreak: (
 //     project: Project
 //   ) => React.ReactElement | React.ReactElement[] | null;
-};
+}
 
 // TODO: Context
 export default function Projects(
   props: Readonly<PropsWithChildren<ProjectProps>>
 ) {
-  const { projects = [], handleProjectMutation, children } = props;
+  const { projects = [], handleProjectMutation, children } = props
 
-  const [editing, setEditing] = useState<Project | undefined>(undefined);
+  const [editing, setEditing] = useState<Project | undefined>(undefined)
 
   const editProject = (project: Project) => {
-    if (editing?.id === project.id) return setEditing(undefined);
-    setEditing(project);
-  };
+    if (editing?.id === project.id) return setEditing(undefined)
+    setEditing(project)
+  }
 
   const onSubmit = (id: string | undefined, data: Partial<Project>) => {
-    if (id) return handleProjectMutation({ action: "update", id, project: data });
-    return handleProjectMutation({ action: "add", project: data });
-  };
+    if (id) return handleProjectMutation({ action: "update", id, project: data })
+    return handleProjectMutation({ action: "add", project: data })
+  }
 
   const removeProject = (id: string) => {
-    handleProjectMutation({ action: "remove", id });
-  };
+    handleProjectMutation({ action: "remove", id })
+  }
 
   return (
     <>
@@ -50,12 +50,20 @@ export default function Projects(
                   <h4>{project.title}</h4>
                   <p>{project.description}</p>
                             {project.deleted ? (
-                            <p>[DELETED</p>
+                            <p>[DELETED]</p>
                         ) : (
                             
-                            <button type="button" onClick={() => removeProject(project.id)}>
-                                Remove
-                            </button>
+                            // <button type="button" onClick={() => removeProject(project.id)}>
+                            //     Remove
+                            // </button>
+                            <button
+                            onClick={() => removeProject(project.id)}
+                            type="button"
+                            className="ml-2 error"
+                          >
+                            [del]
+                          </button>
+                            
                              )}
 
                   <button
@@ -65,13 +73,7 @@ export default function Projects(
                   >
                     [{editing?.id === project.id ? "lukk" : "endre"}]
                   </button>
-                  <button
-                    onClick={() => removeProject(project.id)}
-                    type="button"
-                    className="ml-2 error"
-                  >
-                    [del]
-                  </button>
+                 
                   
                 </header>
               </li>
@@ -83,9 +85,34 @@ export default function Projects(
       {/* Triks for å trigge recreate - useReducer oppdaterer ikke state ved rerender */}
       <ProjectForm key={editing?.id} onSubmit={onSubmit} project={editing} />
     </>
-  );
+  )
 }
 
+
+//<section className="project-ideas" data-testid="project-idea">
+//         <h2>Your Projects</h2>
+//         {projectData.length > 0 ? (
+//             <article>
+//                 {projectData.map((projectItem) => (
+//                     <section key={projectItem.id}>
+                        
+//                             <h2>{projectItem.title}</h2>
+//                             <p>{projectItem.description}</p>
+//                             {projectItem.deleted ? (
+//                             <p>[DELETED</p>
+//                         ) : (
+//                             <button type="button" onClick={() => handleRemoveProject(projectItem.id)}
+//                             >
+//                                 Remove
+//                             </button>
+//                         )}
+//                     </section>
+//                 ))}
+//             </article>
+//         ) : (
+//             <p>No data</p>
+//         )}
+//     </section>
 
 // import { useProjectForm } from "../hooks/useProjectForm";
 // import type { Project } from "./Types";
