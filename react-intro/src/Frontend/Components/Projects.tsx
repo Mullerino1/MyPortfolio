@@ -2,7 +2,7 @@ import { useState, type PropsWithChildren } from "react";
 // import { formatDistance } from "../Features/Helpers/format";
 import ProjectForm from "./ProjectInfo";
 import type { HandleProject, Project } from "./Types";
-// import { formatDistance } from "../Features/Helpers/format";
+import { formatDistance } from "../Features/Helpers/format";
 
 type ProjectProps = {
   handleProjectMutation: HandleProject
@@ -19,6 +19,8 @@ export default function Projects(
   const { projects = [], handleProjectMutation, children } = props
 
 //   const formatedDistance = formatDistance(new Date(publishedAt));
+        const projectDate = new Date()
+        const dateDistance = formatDistance(new Date(projectDate))
 
 
   const [editing, setEditing] = useState<Project | undefined>(undefined)
@@ -48,11 +50,12 @@ export default function Projects(
             <p>You have no projects</p>
           ) : (
             projects.map((project) => (
+            
               <section key={project.id} className="project-card">
                     
                   <h4>{project.title}</h4>
                   <p>{project.description}</p>
-                  {/* <p>{formatDistance}</p> */}
+                  <p>created {dateDistance}</p>
                  
                   <p>{project.public}</p>
                   <p>{project.tags}</p>
@@ -82,7 +85,8 @@ export default function Projects(
                  
                   
               </section>
-            ))
+            )
+            )
           )}
         </article>
       </section>
