@@ -26,12 +26,14 @@ export const actions = {
   add: "add",
   remove: "remove",
   update: "update",
+  
 } as const
 
 export type HandleProjectProps =
   | {
       action: typeof actions.remove
       id: string
+    
     }
   | {
       action: typeof actions.update
@@ -41,6 +43,7 @@ export type HandleProjectProps =
   | {
       action: typeof actions.add
       project: Partial<Project>
+    
     }
 
 export type HandleProject = (props: HandleProjectProps) => void

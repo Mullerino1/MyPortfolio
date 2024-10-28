@@ -259,13 +259,13 @@
 //   );
 // }
 import React, { useEffect, useState } from "react";
-import Layout from "../Components/Layout";
+// import Layout from "../Components/Layout";
 import Project from "../Components/Projects";
-import DeleteProject from "../Components/ProjectInfo";
+// import DeleteProject from "../Components/ProjectInfo";
 import useProjects from "../hooks/useProjects"; // Import the custom hook
 import '../Styling/ProjectPageS.scss';
 import type { HandleProject, Project as ProjectType } from "../Components/Types";
-import useProjectForm from "../hooks/useProjectForm";
+// import useProjectForm from "../hooks/useProjectForm";
 
 
 
@@ -291,26 +291,26 @@ export default function ProjectPage() {
     }
   }
 
-  const addProjectServer = async (id: string) => {
-    try {
-      return fetch("http://localhost:3000", {
-        method: "POST",
-        body: JSON.stringify({
-          note: "",
-          projectId: id,
-        }),
-      })
-    } catch (error) {
-      console.error(error)
-    }
-  }
+  // const addProjectServer = async (id: string) => {
+  //   try {
+  //     return fetch("http://localhost:3000", {
+  //       method: "POST",
+  //       body: JSON.stringify({
+  //         note: "",
+  //         projectId: id,
+  //       }),
+  //     })
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }
 
-  const addProject = async (id: string) => {
-    const result = await addProjectServer(id)
-    if (!result) return
+  // const addProject = async (id: string) => {
+  //   const result = await addProjectServer(id)
+  //   if (!result) return
 
-    await get()
-  }
+  //   await get()
+  // }
 
   if (status.loading) return <p>Laster ...</p>
   if (status.error) return <p className="error">{error}</p>
@@ -320,6 +320,7 @@ export default function ProjectPage() {
       <Project
         projects={projects}
         handleProjectMutation={handleProjectMutation}
+        
       >
       </Project>
     </>

@@ -85,7 +85,7 @@ export default function Projects(
                     onClick={() => editProject(project)}
                     type="button"
                   >
-                    [{editing?.id === project.id ? "close" : "change"}]
+                    [{editing?.id === project.id ? "close" : "edit"}]
                   </button>
                  
                   

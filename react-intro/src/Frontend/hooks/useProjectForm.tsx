@@ -166,5 +166,4 @@ export function useProjectForm<T extends Record<string, string>>({
 
 export default useProjectForm
 
-// Usage Example for a Project form component
 

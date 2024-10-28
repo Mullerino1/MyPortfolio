@@ -176,22 +176,11 @@ export default function FrontPage() {
 
   return (
     <>
-      <Project
+       <Project
         projects={projects}
         handleProjectMutation={handleProjectMutation}
-        renderStreak={(project) => {
-          // const streaks = project.streaks;
-
-         
-        }}
       >
-        {/* <StreakTotal
-          streakCount={habits.length}
-          // streakCount={streaks.length}
-          totalStreak={calculateTotalStreaks()}
-        /> */}
-        {/* <pre>{JSON.stringify(status)}</pre> */}
       </Project>
     </>
-  );
+  )
 }

@@ -21,7 +21,7 @@ const remove = async (id: string) => {
   }
 }
 
-const create = async (data) => {
+const create = async (data: Partial<Project>) => {
   try {
     const createdProject = await fetch(url, {
       method: "POST",
