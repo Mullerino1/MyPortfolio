@@ -145,6 +145,25 @@ await updateProjectData(newData)
 return c.json({ data: newData})
 })
 
+app.patch("/:id", async (c) => {
+    const reqId = c.req.param("id")
+    const updatedFields = await c.req.json<Partial<Project>>()
+    if (!reqId) return c.json({ error: "missing id" }, 400)
+
+    const data = await getParsedData()
+    const existingIndex = data.findIndex(
+        (project) => project.id.toLowerCase() === reqId.toLowerCase()
+    )
+
+    if (existingIndex === -1) return c.json({ error: "id not found" }, 404)
+
+    data[existingIndex] = { ...data[existingIndex], ...updatedFields }
+
+    await updateProjectData(data); // Save updated data
+    return c.json({ data: data[existingIndex] }, 200)
+})
+
+
 // const port = 3001
 // console.log(`server is running ish on port ${port}`)
 

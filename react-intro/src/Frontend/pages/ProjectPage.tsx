@@ -272,6 +272,7 @@ import type { HandleProject, Project as ProjectType } from "../Components/Types"
 export default function ProjectPage() {
   const { add, remove, update, status, get, data, error } = useProjects()
   const projects = data
+  
 
   const handleProjectMutation: HandleProject = (props) => {
     const { action } = props
