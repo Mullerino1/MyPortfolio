@@ -38,9 +38,9 @@
     "id": "765",
     "title": "Project",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-    "publishedAt": "",
+    "publishedAt": "2024-10-17",
     "visibility": "public",
-    "status": "New",
+    "status": "paused",
     "categories": [
       "technology"
     ],
