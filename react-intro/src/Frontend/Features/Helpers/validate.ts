@@ -7,7 +7,7 @@ const projectSchema = z.object({
     title: z.string(),
     description: z.string(),
     publishedAt: z.string().datetime(),
-    public: z.boolean(),
+    public: z.string(),
     status: z.string(),
     deleted: z.boolean(),
     categories: z.array(z.string()),

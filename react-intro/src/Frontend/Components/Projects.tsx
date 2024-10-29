@@ -327,11 +327,10 @@ export default function Projects(
                   <section key={project.id} className="project-card">
                     <h4>{project.title}</h4>
                     <p>{project.description}</p>
-                    
+                    <p>{project.status}</p>
                     {/* <p>{project.categories}</p> */}
                     <p>Created: {formattedDate} which is {dateDistance}</p>
                     <p>{project.public ? "Public" : "Private"}</p>
-                    <p className="project">{project.status}</p>
                     {project.deleted ? (
                       <p>[DELETED]</p>
                     ) : (
