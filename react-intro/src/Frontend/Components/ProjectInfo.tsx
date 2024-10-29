@@ -162,14 +162,14 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
       title: project?.title ?? "",
       description: project?.description ?? "",
       id: project?.id ?? "",
-      date: project?.createdAt ?? "" 
+      createdAt: project?.createdAt ?? "" 
     },
     onSubmit: (data) => onSubmit(project?.id, data),
     validate: {
       title: (_, value) => value.length > 2,
       description: (_, value) => value.length > 5, 
       id: (_, value) => value.trim() !== "", 
-      date: (_, value) => !!Date.parse(value) 
+      createdAt: (_, value) => !!Date.parse(value) 
     },
   })
 
@@ -228,12 +228,12 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
         </section>
 
         <section>
-          <label htmlFor="date">Project Date:</label>
+          <label htmlFor="createdAt">Project Date:</label>
           <input
-            id="date"
+            id="createdAt"
             type="date"
-            name="date"
-            {...getFieldProps("date")}
+            name="createdAt"
+            {...getFieldProps("createdAt")}
           />
         </section>
         

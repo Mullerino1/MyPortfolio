@@ -34,7 +34,7 @@ import { nb } from "date-fns/locale";
  * @returns The formatted date
  */
 export function formatCreatedAt(createdAt: Date): string {
-  return format(new Date(createdAt), "dd-MM-yy");
+  return format(new Date(createdAt), "dd-MM-yyyy");
 }
 
 /**
