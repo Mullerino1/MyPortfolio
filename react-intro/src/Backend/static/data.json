@@ -55,54 +55,5 @@
     "updatedAt": "",
     "publishedAt": "2024-10-24",
     "status": "paused"
-  },
-  {
-    "title": "wdadad",
-    "description": "dawdaw",
-    "id": "9909",
-    "createdAt": "2024-10-04",
-    "updatedAt": "",
-    "publishedAt": "2024-10-31",
-    "status": "paused"
-  },
-  {
-    "title": "testing",
-    "description": "fesfsfe",
-    "id": "77677",
-    "createdAt": "2024-10-03",
-    "updatedAt": "",
-    "publishedAt": "2024-10-25",
-    "status": "paused"
-  },
-  {
-    "title": "fsefsfe",
-    "description": "fesfse",
-    "id": "55655",
-    "createdAt": "2024-10-03",
-    "updatedAt": "",
-    "publishedAt": "2024-10-24",
-    "status": "paused",
-    "visibility": "private"
-  },
-  {
-    "title": "justIncase",
-    "description": "just in case man",
-    "id": "6676",
-    "createdAt": "2024-10-03",
-    "updatedAt": "",
-    "publishedAt": "2024-10-10",
-    "status": "finished",
-    "visibility": "public"
-  },
-  {
-    "title": "defsefsd",
-    "description": "fesddwe",
-    "id": "09384",
-    "createdAt": "2024-10-03",
-    "updatedAt": "",
-    "publishedAt": "2024-10-17",
-    "status": "paused",
-    "visibility": "public",
-    "categories": []
   }
 ]
