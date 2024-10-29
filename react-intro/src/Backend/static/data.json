@@ -6,9 +6,9 @@
     "publishedAt": "",
     "public": "",
     "status": "",
-    "tags": "",
+    "categories": [],
     "createdAt": "2024-01-01",
-    "updatedAt": "2024-03-01",
+    "endedAt": "2024-03-01",
     "deleted": "true"
   },
   {
@@ -18,9 +18,9 @@
     "publishedAt": "",
     "public": "",
     "status": "",
-    "tags": "",
+    "categories": [],
     "createdAt": "2024-01-01",
-    "updatedAt": "2024-03-01",
+    "endedAt": "2024-03-01",
     "deleted": "true"
   },
   {
@@ -30,9 +30,9 @@
     "publishedAt": "",
     "public": "",
     "status": "",
-    "tags": "",
-    "createdAt": "2024-01-01",
-    "updatedAt": "2024-03-01"
+    "categories": [],
+    "createdAt": "2024-12-14",
+    "endedAt": "2024-03-01"
   },
   {
     "id": "765",
@@ -41,8 +41,24 @@
     "publishedAt": "",
     "public": "",
     "status": "",
-    "tags": "",
+    "categories": [
+      "technology"
+    ],
     "createdAt": "2024-01-01",
-    "updatedAt": "2024-03-01"
+    "endedAt": "2024-03-01"
+  },
+  {
+    "title": "fsffsdf",
+    "description": "fsfsfsefs",
+    "id": "77777",
+    "createdAt": "",
+    "updatedAt": ""
+  },
+  {
+    "title": "hfdgdrg",
+    "description": "gdgdfrg",
+    "id": "556565",
+    "createdAt": "",
+    "updatedAt": ""
   }
 ]

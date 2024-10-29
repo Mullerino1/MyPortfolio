@@ -236,6 +236,7 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
             {...getFieldProps("date")}
           />
         </section>
+        
 
         <div>
           <button type="submit" id="submit" className="success">

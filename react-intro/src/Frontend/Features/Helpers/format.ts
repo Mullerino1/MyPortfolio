@@ -10,12 +10,36 @@
 // }
 
 // src/utils/dateUtils.ts
-import { formatDistance as fDistance } from "date-fns";
+// import { formatDistance as fDistance } from "date-fns";
+// import { nb } from "date-fns/locale";
+
+// /**
+//  * Formats the distance between a given date and the current date
+//  * @param publishedAt - The date to format the distance from
+//  * @returns A formatted string with the distance from the given date to now
+//  */
+// export function formatDistance(createdAt: Date): string {
+//   return fDistance(createdAt, new Date(), {
+//     addSuffix: true,
+//     includeSeconds: true,
+//     locale: nb,
+//   });
+// }
+import { format, formatDistance as fDistance } from "date-fns";
 import { nb } from "date-fns/locale";
 
 /**
  * Formats the distance between a given date and the current date
- * @param publishedAt - The date to format the distance from
+ * @param createdAt - The date to format as "DD-MM-YY"
+ * @returns The formatted date
+ */
+export function formatCreatedAt(createdAt: Date): string {
+  return format(new Date(createdAt), "dd-MM-yy");
+}
+
+/**
+ * Formats the distance between a given date and the current date
+ * @param createdAt - The date to format the distance from
  * @returns A formatted string with the distance from the given date to now
  */
 export function formatDistance(createdAt: Date): string {
@@ -25,3 +49,10 @@ export function formatDistance(createdAt: Date): string {
     locale: nb,
   });
 }
+
+// // Example usage
+// const data = {
+//   createdAt: "2024-01-01",
+// };
+// console.log(formatCreatedAt(data.createdAt)); // "01-01-24"
+

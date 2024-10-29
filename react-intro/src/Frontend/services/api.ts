@@ -23,7 +23,7 @@ const remove = async (id: string) => {
 
 
 
-const create = async (data: Partial<Project>) => {
+const create = async (data: Pick<Project, "title">) => {
   console.log("createing didnt work")
   try {
     const createdProject = await fetch(url, {

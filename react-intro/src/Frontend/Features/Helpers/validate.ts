@@ -6,7 +6,7 @@ const projectSchema = z.object({
     id: z.string().uuid(),
     title: z.string(),
     description: z.string(),
-    publishedAt: z.string().datetime(),
+    // publishedAt: z.string().datetime(),
     public: z.boolean(),
     deleted: z.boolean(),
     tags: z.array(z.string()),

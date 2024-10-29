@@ -4,12 +4,13 @@ export type Id = ReturnType<typeof crypto.randomUUID>
 
 export type Project = {
     id: Id
-    title?: string
+    title: string
     description?: string
-    date: Date
-    createdAt?: Date | null
+    categories: string[]
+    createdAt: Date
+    endedAt?: Date | null
+    publishedAt?: Date | null
     deleted?: boolean
-    tags: string[]
     public?: boolean
     status?: boolean
 }
