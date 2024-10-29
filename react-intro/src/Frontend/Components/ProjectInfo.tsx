@@ -165,7 +165,7 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
       createdAt: project?.createdAt ?? "", 
       publishedAt: project?.publishedAt ?? "",
       status: project?.status ?? "",
-      visibility: project?.status ?? "",
+      visibility: project?.visibility ?? "",
 
       // updatedAt: project?.updatedAt ?? "",
     },
