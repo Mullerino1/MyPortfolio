@@ -331,7 +331,7 @@ export default function Projects(
                     <p>{project.status}</p>
                     {/* <p>{project.categories}</p> */}
                     <p>Created: {formattedDate} which is {dateDistance}</p>
-                    <p>{project.public ? "Public" : "Private"}</p>
+                    <p>{project.visibility}</p>
                     {project.deleted ? (
                       <p>[DELETED]</p>
                     ) : (

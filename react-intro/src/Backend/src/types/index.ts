@@ -11,10 +11,10 @@ export type Project = {
     endedAt?: Date | null
     publishedAt?: Date | null
     deleted?: boolean
-    public?: boolean
+    visibility?: string
     status?: string
 }
 
 // export type ToProjectDomain = Project & {public?: "true"}
 
-export type ToProjectDomain = Project & { deleted?: "true", public?: "true", status?: "true"}
+export type ToProjectDomain = Project & { deleted?: "true", visibility?: "true", status?: "true"}

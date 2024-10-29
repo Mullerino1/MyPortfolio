@@ -165,6 +165,8 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
       createdAt: project?.createdAt ?? "", 
       publishedAt: project?.publishedAt ?? "",
       status: project?.status ?? "",
+      visibility: project?.status ?? "",
+
       // updatedAt: project?.updatedAt ?? "",
     },
     onSubmit: (data) => onSubmit(project?.id, data),
@@ -175,6 +177,8 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
       createdAt: (_, value) => !!Date.parse(value) ,
       publishedAt: (_, value) => !!Date.parse(value) ,
       status: (_, value) => value.length > 2,
+      visibility: (_, value) => value === "public" || value === "private", // Simple validation
+
 
       // updatedAt: (_, value) => !!Date.parse(value) 
     },
@@ -264,7 +268,56 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
             <option value="finished">Finished</option>
           </select>
         </section>
-       
+
+        <section>
+        <label>Visibility:</label>
+        <label>
+          <input
+            type="radio"
+            name="visibility"
+            value="public"
+            checked={getFieldProps("visibility").value === "public"}
+            onChange={(e) => getFieldProps("visibility").onChange(e)} // Trigger field update
+          />
+          Public
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="visibility"
+            value="private"
+            checked={getFieldProps("visibility").value === "private"}
+            onChange={(e) => getFieldProps("visibility").onChange(e)} // Trigger field update
+          />
+          Private
+        </label>
+      </section>
+
+
+        {/* <section>
+          <label>Visibility:</label>
+          <label>
+            <input
+              type="radio"
+              name="visibility"
+              value="public"
+              checked={getFieldProps("visibility").value === "public"}
+              {...getFieldProps("visibility")}
+            />
+            Public
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="visibility"
+              value="private"
+              checked={getFieldProps("visibility").value === "private"}
+              {...getFieldProps("visibility")}
+            />
+            Private
+          </label>
+        </section>
+        */}
         
 
         <div>
