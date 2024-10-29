@@ -12,7 +12,7 @@ export type Project = {
     publishedAt?: Date | null
     deleted?: boolean
     public?: boolean
-    status?: boolean
+    status?: string
 }
 
 // export type ToProjectDomain = Project & {public?: "true"}
