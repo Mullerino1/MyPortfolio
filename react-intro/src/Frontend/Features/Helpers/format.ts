@@ -34,7 +34,7 @@ import { nb } from "date-fns/locale";
  * @returns The formatted date
  */
 export function formatCreatedAt(createdAt: Date): string {
-  return format(new Date(createdAt), "dd-MM-yyyy");
+  return format(new Date(createdAt), "dd-MM-yyyy")
 }
 
 /**
@@ -47,12 +47,6 @@ export function formatDistance(createdAt: Date): string {
     addSuffix: true,
     includeSeconds: true,
     locale: nb,
-  });
+  })
 }
-
-// // Example usage
-// const data = {
-//   createdAt: "2024-01-01",
-// };
-// console.log(formatCreatedAt(data.createdAt)); // "01-01-24"
 

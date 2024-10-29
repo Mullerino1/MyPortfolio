@@ -65,11 +65,11 @@ export function useProjects(){
 
   const add = async (data: Partial<ProjectType>) => {
     console.log(data + '2')
-    const { title = "", description = "", id= "", createdAt="", updatedAt = "" }  = data
+    const { title = "", description = "", id= "", createdAt="", updatedAt = "", publishedAt="" }  = data
 
     try {
       setStatus("loading")
-      await projectApi.create({ title, description, id, createdAt, updatedAt})
+      await projectApi.create({ title, description, id, createdAt, updatedAt, publishedAt})
       await fetchData()
       setStatus("success")
     } catch (error) {
