@@ -325,7 +325,8 @@ export default function Projects(
 
                 return (
                   <section key={project.id} className="project-card">
-                    <h4>{project.title}</h4>
+                    <article>
+                    <h2>{project.title}</h2>
                     <p>{project.description}</p>
                     <p>{project.status}</p>
                     {/* <p>{project.categories}</p> */}
@@ -341,6 +342,7 @@ export default function Projects(
                     <button onClick={() => editProject(project)} type="button">
                       [{editing?.id === project.id ? "close" : "edit"}]
                     </button>
+                    </article>
                   </section>
                 )
               })

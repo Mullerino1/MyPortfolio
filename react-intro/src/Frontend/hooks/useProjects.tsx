@@ -97,6 +97,7 @@ export function useProjects(){
   const update = async (id: string, data: Partial<ProjectType>) => {
     try {
       setStatus("loading")
+      console.log(data)
       await projectApi.update(id, data)
       await fetchData()
       setStatus("success")

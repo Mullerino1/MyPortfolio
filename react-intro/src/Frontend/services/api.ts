@@ -84,6 +84,7 @@ const listProjects = async (): Promise <{
 
 
 const update = async (id: string, data: Partial<Project>) => {
+  console.log("update was triggered")
   try {
     const updateProject = await fetch(`${url}/${id}`, {
       method: "PATCH",

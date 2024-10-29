@@ -271,6 +271,7 @@ export function useProjectReducerForm<T extends Record<string, string>>({
 
   // Handle form submission
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    console.log(event)
     event.preventDefault();
     const isFormValid = Object.values(state).every((field) => field.isValid);
     if (!isFormValid) return;
