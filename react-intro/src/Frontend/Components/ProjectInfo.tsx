@@ -225,6 +225,9 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
             placeholder="Describe your project"
             {...getFieldProps("description")}
           />
+            {isFieldInvalid("description") && (
+            <p className="field-error error">Needs minimum 5 letters</p>
+          )}
         </section>
 
         <section>
