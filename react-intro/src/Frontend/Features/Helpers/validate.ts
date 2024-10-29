@@ -3,6 +3,7 @@ import { z } from "zod";
 export {projectSchema, projectsSchema } 
 
 const projectSchema = z.object({
+    id: z.string().uuid(),
     title: z.string(),
     description: z.string(),
     publishedAt: z.string().datetime(),

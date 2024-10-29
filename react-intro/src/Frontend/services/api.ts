@@ -21,7 +21,10 @@ const remove = async (id: string) => {
   }
 }
 
+
+
 const create = async (data: Partial<Project>) => {
+  console.log("createing didnt work")
   try {
     const createdProject = await fetch(url, {
       method: "POST",
