@@ -358,7 +358,7 @@ function formReducer<T extends Record<string, string>>(
 ): FormState<T> {
   switch (action.type) {
     case FormAction.UPDATE_FIELD:
-      console.log("Reducer action - UPDATE_FIELD:", action);
+      // console.log("Reducer action - UPDATE_FIELD:", action);
       return {
         ...state,
         [action.field]: {
