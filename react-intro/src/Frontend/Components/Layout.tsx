@@ -1,6 +1,6 @@
 import React from "react"
 // import Navbar from "./Navbar"
-// import Title from "./Title"
+import Title from "./Title"
 import type { PropsWithChildren } from "react"
 // import Footer from "./Footer"
 
@@ -13,8 +13,9 @@ export default function Layout(props: LayoutProps) {
     return(
     <>
     <header>
-    {/* <Title title={"Mullerinos Portfolio"} /> */}
+    <Title title={"Mullerinos Portfolio"} />
         {/* <Navbar/> */}
+        {/* <h1>Mullerino's Portfolio</h1> */}
         
     </header>
      
