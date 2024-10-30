@@ -84,10 +84,13 @@ import { cors } from "hono/cors";
 import type { Project } from "./types/index"
 import { getParsedData, updateProjectData } from "./types/lib";
 import type { Id } from "./types"
+import { PrismaClient } from "@prisma/client";
 
 
 
 const app = new Hono()
+
+const prisma = new PrismaClient()
 
 app.use(
     cors({
@@ -96,7 +99,17 @@ app.use(
 )
 
 app.get("/", async (c) => {
-    const data = await getParsedData()
+    const projects = await prisma.project.findMany({
+        include: {
+            categories: true
+        }
+    }
+    )
+    const data = projects.map(project => ({
+        ...project, 
+        categories: project.categories.map(categories => categories.categories),
+    }))
+    console.log(data)
     return c.json({ data })
 })
 
@@ -114,53 +127,95 @@ if(!existing) return c.json({ error: "id not found"}, 404)
 app.post("/", async (c) => {
     
     const body = await c.req.json<Project>()
+    
     if(!body.id) return c.json({ error: "id missing"}, 400)
-        const data = await getParsedData()
-    const hasId = data.some(
-        (id) => id.id.toLowerCase() === body.id.toLowerCase()
-    )
-    if (hasId) return c.json({ error: "place alredy exists"}, 409)
-        data.push(body)
-    await updateProjectData(data)
+    const categories = body.categories
+    const project = await prisma.project.create({
+        data: {
+            id: +body.id,
+            title: body.title,
+            description: body.description,
+            publishedAt: body.publishedAt as String,
+            createdAt: body.createdAt as String,
+            public: body.visibility,
+            status: body.status
+        }
+    })
+
+    for (let i = 0; i < categories.length; i++) {
+        await prisma.categories.create({
+            data: {
+                projectId: +body.id,
+                categories: categories[i]
+            }
+        })
+    }
+
+    const data = await prisma.project.findMany({
+        include: {
+            categories: true
+        }
+    })
     return c.json({data}, 201)
 })
 
 app.delete("/:id", async (c) => {
     const reqId = c.req.param("id")
-    const data = await getParsedData()
-    if (!reqId) return c.json({ error: "missing id"}, 400)
-        const existing = data.find(
-    (id) => id.id.toLowerCase() === reqId.toLowerCase()
-)
-if(!existing) return c.json({ error: "id not found"}, 409)
-
-    if (existing.deleted) return c.json({error: "id already deleted"}, 409)
-        const newData = data.map((project) => {
-    if(project.id === reqId) {
-        return { ...project, deleted: true}
-    }
-return project
-})
-await updateProjectData(newData)
+    if (reqId) {
+    const deletedProject = await prisma.project.delete({
+        where: {
+            id: +reqId
+        }
+    })
+    const newData = await prisma.project.findMany({
+        include: {
+            categories: true
+        }
+    })
+}
 return c.json({ data: newData})
 })
 
 app.patch("/:id", async (c) => {
     const reqId = c.req.param("id")
     const updatedFields = await c.req.json<Partial<Project>>()
-    if (!reqId) return c.json({ error: "missing id" }, 400)
+    console.log(updatedFields)
+    const data = await prisma.project.update({
+        where: {
+            id: +reqId
+        },
+        data: { 
+            id: updatedFields.id,
+            title: updatedFields.title,
+            description: updatedFields.description,
+            publishedAt: updatedFields.publishedAt,
+            public: updatedFields.visibility,
+            createdAt: updatedFields.createdAt,
+            status: updatedFields.status
+         }
+        
+})
+    await prisma.categories.deleteMany({
+        where: {
+            projectId: +reqId
+        }
+    })
 
-    const data = await getParsedData()
-    const existingIndex = data.findIndex(
-        (project) => project.id.toLowerCase() === reqId.toLowerCase()
-    )
+    const categories = updatedFields.categories
 
-    if (existingIndex === -1) return c.json({ error: "id not found" }, 404)
+    if(categories) {
+    for (let i = 0; i < categories.length; i++) {
+        await prisma.categories.create({
+            data: {
+                projectId: +reqId,
+                categories: categories[i]
+            }
+        })
+    }
+}
 
-    data[existingIndex] = { ...data[existingIndex], ...updatedFields }
 
-    await updateProjectData(data); // Save updated data
-    return c.json({ data: data[existingIndex] }, 200)
+    return c.json(200)
 })
 
 

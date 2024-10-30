@@ -28,7 +28,7 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
     validate: {
       title: (_, value) => value.length > 2,
       description: (_, value) => value.length > 5, 
-      id: (_, value) => value.trim() !== "", 
+      id: (_, value) => value !== "", 
       createdAt: (_, value) => !!Date.parse(value) ,
       publishedAt: (_, value) => !!Date.parse(value) ,
       status: (_, value) => value.length > 2,
