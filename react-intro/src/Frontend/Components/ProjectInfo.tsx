@@ -21,8 +21,8 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
       publishedAt: project?.publishedAt ?? "",
       status: project?.status ?? "",
       visibility: project?.visibility ?? "",
+      categories: project?.categories ?? [],
 
-      // updatedAt: project?.updatedAt ?? "",
     },
     onSubmit: (data) => onSubmit(project?.id, data),
     validate: {
@@ -33,9 +33,12 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
       publishedAt: (_, value) => !!Date.parse(value) ,
       status: (_, value) => value.length > 2,
       visibility: (_, value) => value === "public" || value === "private", // Simple validation
+      categories: (_, value) => {
+        const cats = Array.isArray(value) ? value : [];
+        return cats.length > 0 && cats.length <= 5;
+      },
 
 
-      // updatedAt: (_, value) => !!Date.parse(value) 
     },
   })
 
@@ -49,6 +52,8 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
       submit: "Add Project",
     },
   }
+
+
 
   return (
     <section className="project-ideas" data-testid="project-idea">
@@ -150,32 +155,39 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
           Private
         </label>
       </section>
+  
+            <section>
+        <label htmlFor="categories">Categories (select up to 5):</label>
+        <select
+          id="categories"
+          name="categories"
+          multiple
+          className="w-full min-h-[100px]"
+          value={Array.isArray(getFieldProps("categories").value) 
+            ? getFieldProps("categories").value 
+            : []}
+          onChange={(e) => {
+            const selectedOptions = Array.from(e.target.selectedOptions, option => option.value)
+            if (selectedOptions.length <= 5) {
+              getFieldProps("categories").onChange({
+                target: { value: selectedOptions }
+              })
+            }
+          }}
+        >
+          <option value="Frontend">Frontend</option>
+          <option value="Backend">Backend</option>
+          <option value="Mobile">Mobile</option>
+          <option value="DevOps">DevOps</option>
+          <option value="Design">Design</option>
 
+        </select>
+        {isFieldInvalid("categories") && (
+          <p className="field-error error">Please select 1-5 categories</p>
+        )}
+      </section>
 
-        {/* <section>
-          <label>Visibility:</label>
-          <label>
-            <input
-              type="radio"
-              name="visibility"
-              value="public"
-              checked={getFieldProps("visibility").value === "public"}
-              {...getFieldProps("visibility")}
-            />
-            Public
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="visibility"
-              value="private"
-              checked={getFieldProps("visibility").value === "private"}
-              {...getFieldProps("visibility")}
-            />
-            Private
-          </label>
-        </section>
-        */}
+        
         
 
         <div>

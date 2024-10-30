@@ -61,7 +61,7 @@ export default function Projects(
                     <h2>{project.title}</h2>
                     <p>{project.description}</p>
                     <p>{project.status}</p>
-                    {/* <p>{project.categories}</p> */}
+                    <p>{project.categories}</p>
                     <p>Created: {formattedDate} which is {dateDistance}</p>
                     <p>{project.visibility}</p>
                     {project.deleted ? (

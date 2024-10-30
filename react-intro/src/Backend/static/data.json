@@ -46,5 +46,33 @@
     ],
     "createdAt": "2024-01-01",
     "endedAt": "2024-03-01"
+  },
+  {
+    "title": "fsfsfse",
+    "description": "sdfsef",
+    "id": "494433",
+    "createdAt": "2024-10-03",
+    "updatedAt": "",
+    "publishedAt": "2024-10-25",
+    "status": "finished",
+    "visibility": "private",
+    "categories": [
+      "Backend",
+      "DevOps"
+    ]
+  },
+  {
+    "title": "Project_Kira",
+    "description": "This is a project about kira, its amaazinggg",
+    "id": "000666",
+    "createdAt": "2024-10-02",
+    "updatedAt": "",
+    "publishedAt": "2024-10-31",
+    "status": "paused",
+    "visibility": "public",
+    "categories": [
+      "Frontend",
+      "Mobile"
+    ]
   }
 ]

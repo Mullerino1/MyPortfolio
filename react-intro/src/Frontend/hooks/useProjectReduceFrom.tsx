@@ -4,7 +4,7 @@ import { useEffect, useReducer, type FormEvent } from "react";
 
 // Define the structure of a field's state
 type FieldState = {
-  value: string;
+  value: string | string[]
   isValid: boolean;
   isDirty: boolean;
   isTouched: boolean;
