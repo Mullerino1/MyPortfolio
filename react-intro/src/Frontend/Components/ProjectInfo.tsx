@@ -57,6 +57,7 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
 
   return (
     <section className="project-form" data-testid="project-idea">
+      <div className="form-submitter">
       <h3>{isEditing ? labels.edit.title : labels.add.title}</h3>
       
       <form onSubmit={handleSubmit}>
@@ -196,6 +197,7 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
           </button>
         </div>
       </form>
+      </div>
     </section>
   )
 }
