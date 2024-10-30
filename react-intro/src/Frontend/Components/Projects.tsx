@@ -36,8 +36,9 @@ export default function Projects(
 
   return (
     <>
+     <section className="project-ideas">
       <form className="form">
-        <section className="project-ideas">
+       
           <h2>Your Projects:</h2>
           {children}
           <article>
@@ -61,7 +62,9 @@ export default function Projects(
                     <h2>{project.title}</h2>
                     <p>{project.description}</p>
                     <p>{project.status}</p>
-                    <p>{project.categories}</p>
+                    <ul>
+                    <li>{project.categories}</li>
+                    </ul>
                     <p>Created: {formattedDate} which is {dateDistance}</p>
                     <p>{project.visibility}</p>
                     {project.deleted ? (
@@ -80,8 +83,9 @@ export default function Projects(
               })
             )}
           </article>
-        </section>
+        
       </form>
+      </section>
       <ProjectForm key={editing?.id} onSubmit={onSubmit} project={editing} />
     </>
   )

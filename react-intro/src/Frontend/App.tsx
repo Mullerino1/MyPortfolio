@@ -15,7 +15,7 @@ export default function App() {
     <Layout>
     
     <header>
-      <h1>Mullerino's Portfolio</h1>
+      {/* <h1>Mullerino's Portfolio</h1> */}
     </header>
      
 

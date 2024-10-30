@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Project from "../Components/Projects";
 // import DeleteProject from "../Components/ProjectInfo";
 import useProjects from "../hooks/useProjects"; // Import the custom hook
-import '../Styling/ProjectPageS.scss';
+import '../Styling/FrontPageS.scss';
 import type { HandleProject, Project as ProjectType } from "../Components/Types";
 // import useProjectForm from "../hooks/useProjectForm";
 
@@ -40,12 +40,27 @@ export default function ProjectPage() {
 
   return (
     <>
-      <Project
+    <main>
+   
+  
+
+    <Project
         projects={projects}
         handleProjectMutation={handleProjectMutation}
         
       >
+         <figcaption>
+      <div className="container">
+      <img src="src/Frontend/img/PFPIzumi.png" alt="Profile picture of an anime character" className="image"/>
+      <div className="overlay">
+        <img src="src/Frontend/img/Me.jpg" alt="Profile picture of an anime character" className="image_2" />
+        </div>
+      </div>
+    </figcaption>
       </Project>
+     
+    </main>
+      
     </>
   )
 }

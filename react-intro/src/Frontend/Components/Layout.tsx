@@ -13,8 +13,8 @@ export default function Layout(props: LayoutProps) {
     return(
     <>
     <header>
-    <Title title={"Mullerinos Portfolio"} />
-        {/* <Navbar/> */}
+'    <Title title={"Mullerinos Portfolio"} />
+'        {/* <Navbar/> */}
         {/* <h1>Mullerino's Portfolio</h1> */}
         
     </header>

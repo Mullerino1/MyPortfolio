@@ -32,7 +32,7 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
       createdAt: (_, value) => !!Date.parse(value) ,
       publishedAt: (_, value) => !!Date.parse(value) ,
       status: (_, value) => value.length > 2,
-      visibility: (_, value) => value === "public" || value === "private", // Simple validation
+      visibility: (_, value) => value === "public" || value === "private",
       categories: (_, value) => {
         const cats = Array.isArray(value) ? value : [];
         return cats.length > 0 && cats.length <= 5;
@@ -56,7 +56,7 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
 
 
   return (
-    <section className="project-ideas" data-testid="project-idea">
+    <section className="project-form" data-testid="project-idea">
       <h3>{isEditing ? labels.edit.title : labels.add.title}</h3>
       
       <form onSubmit={handleSubmit}>
@@ -140,7 +140,7 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
             name="visibility"
             value="public"
             checked={getFieldProps("visibility").value === "public"}
-            onChange={(e) => getFieldProps("visibility").onChange(e)} // Trigger field update
+            onChange={(e) => getFieldProps("visibility").onChange(e)} 
           />
           Public
         </label>
@@ -150,7 +150,7 @@ export default function ProjectForm(props: Readonly<ProjectIdeaProps>) {
             name="visibility"
             value="private"
             checked={getFieldProps("visibility").value === "private"}
-            onChange={(e) => getFieldProps("visibility").onChange(e)} // Trigger field update
+            onChange={(e) => getFieldProps("visibility").onChange(e)} 
           />
           Private
         </label>
