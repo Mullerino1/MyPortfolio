@@ -85,8 +85,19 @@ import type { Project } from "./types/index"
 import { getParsedData, updateProjectData } from "./types/lib";
 import type { Id } from "./types"
 import { PrismaClient } from "@prisma/client";
+import { z } from "zod";
 
-
+const projectSchema = z.object({
+    id: z.string(),
+    title: z.string(),
+    description: z.string(),
+    publishedAt: z.string(),
+    visibility: z.string(),
+    status: z.string(),
+    categories: z.array(z.string()),
+    createdAt: z.string(),
+    updatedAt: z.string()
+})
 
 const app = new Hono()
 
@@ -127,7 +138,7 @@ if(!existing) return c.json({ error: "id not found"}, 404)
 app.post("/", async (c) => {
     
     const body = await c.req.json<Project>()
-    
+    projectSchema.parse(body)
     if(!body.id) return c.json({ error: "id missing"}, 400)
     const categories = body.categories
     const project = await prisma.project.create({

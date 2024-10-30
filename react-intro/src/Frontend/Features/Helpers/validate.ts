@@ -9,10 +9,9 @@ const projectSchema = z.object({
     publishedAt: z.string().datetime(),
     visibility: z.string(),
     status: z.string(),
-    deleted: z.boolean(),
     categories: z.array(z.string()),
     createdAt: z.string().datetime(),
-    updatedAt: z.string(),
+    updatedAt: z.string()
     
 })
 
